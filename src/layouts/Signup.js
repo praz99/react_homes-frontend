@@ -34,7 +34,7 @@ const Signup = () => {
           sessionStorage.setItem('auth_token', response.data.auth_token);
         } else {
           setState({
-            errors: response.data.errors,
+            errors: response.errors,
           });
         }
       })
