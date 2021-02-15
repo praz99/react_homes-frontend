@@ -1,6 +1,9 @@
+import React from 'react';
+import Signup from '../layouts/Signup';
+
 const App = () => (
   <div className="App">
-    Hello World
+    <Signup />
   </div>
 );
 
