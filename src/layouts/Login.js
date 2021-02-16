@@ -10,7 +10,7 @@ const Login = () => {
   });
 
   if (sessionStorage.getItem('auth_token')) {
-    return <Redirect to="/mainPage" />;
+    return <Redirect to="/houses" />;
   }
 
   const handleChange = ({ target: { name, value } }) => {

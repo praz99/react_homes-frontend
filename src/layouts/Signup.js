@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
@@ -10,9 +10,9 @@ const Signup = () => {
     errors: '',
   });
 
-  if (sessionStorage.getItem('auth-token')) {
-    return <Redirect to="/mainPage" />;
-  }
+  // if (sessionStorage.getItem('auth-token')) {
+  //   return <Redirect to="/houses" />;
+  // }
   const handleChange = ({ target: { name, value } }) => {
     setState({ ...state, [name]: value });
   };
