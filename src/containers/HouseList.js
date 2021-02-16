@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import House from '../components/House';
+import '../styles/HouseList.css';
 
 const HouseList = () => {
   const [houses, setHouses] = useState({});
@@ -19,10 +20,12 @@ const HouseList = () => {
     };
     fetchData();
   }, []);
+
+  console.log(houses);
   return (
     <>
       {houses && houses.length ? (
-        <div>
+        <div className="houseList-container">
           {houses.map(house => (<House key={house.id} house={house} />))}
         </div>
       ) : <div>No data</div>}

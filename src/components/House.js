@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/House.css';
 
 const House = ({ house }) => (
-  <div style={{ backgroundImage: `url(${house.image})` }}>
+  <div className="house-container">
     <Link to={`/house/${house.id}`}>See Details</Link>
   </div>
 );
