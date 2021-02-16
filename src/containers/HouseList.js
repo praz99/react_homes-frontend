@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import House from '../components/House';
+import House from '../components/House';
 
 const HouseList = () => {
+  const [houses, setHouses] = useState({});
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -11,17 +12,21 @@ const HouseList = () => {
           { headers: { Authorization: `${sessionStorage.getItem('auth_token')}` } },
           { withCredentials: true },
         );
-        console.log(result.data);
+        setHouses(result.data);
       } catch (error) {
         console.log(error);
       }
     };
-
     fetchData();
-  });
-
+  }, []);
   return (
-    <p>Houses</p>
+    <>
+      {houses && houses.length ? (
+        <div>
+          {houses.map(house => (<House key={house.id} house={house} />))}
+        </div>
+      ) : <div>No data</div>}
+    </>
   );
 };
 
