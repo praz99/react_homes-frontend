@@ -5,7 +5,7 @@ import '../styles/House.css';
 
 const House = ({ house }) => (
   <div className="house-container">
-    <Link to={`/house/${house.id}`}>See Details</Link>
+    <Link to={`/house/${house.id}`} className="house-button">See Details</Link>
   </div>
 );
 
