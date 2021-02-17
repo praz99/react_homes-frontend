@@ -1,23 +1,29 @@
 .landing-container {
   display: flex;
-  height: 100vh;
+  height: 90vh;
   width: 100vw;
   margin-top: 2.5em;
 }
 
 .landing-info {
+  text-align: center;
   margin: 0 0.5em 0 2.5em;
   border-radius: 8px;
   width: 65%;
-  height: 50vh;
+  height: 100%;
   background: #ab913cd1;
   padding: 1em;
 }
 
 .landing-login {
+  text-align: center;
   margin:0 2.5em 0 0.5em;
   border-radius: 8px;
-  height: 50vh;
+  height: 100%;
   background: #ab913cd1;
   padding: 1em;
+}
+
+.landing-signup-info a {
+  color: blue;
 }
