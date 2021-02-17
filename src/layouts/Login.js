@@ -1,15 +1,17 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { loginInit, loginSuccess, loginFailure } from '../actions/index';
 import { API_MAIN, API_LOGIN } from '../constants/api';
 import '../styles/Login.css';
 
-const Login = () => {
+const Login = ({ loginInit, loginSuccess, loginFailure, isLoading, errors }) => {
   const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
-    errors: '',
   });
 
   if (sessionStorage.getItem('auth_token')) {
@@ -28,21 +30,19 @@ const Login = () => {
       username,
       password,
     };
+    loginInit();
     axios.post(`${API_MAIN}${API_LOGIN}`, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.auth_token) {
+          loginSuccess();
           sessionStorage.setItem('auth_token', response.data.auth_token);
           history.push('/houses');
-        } else {
-          setState({
-            errors: response.errors,
-          });
         }
       })
-      .catch(error => error);
+      .catch(error => loginFailure(error));
   };
 
-  const handleErrors = () => (
+  const handleErrors = errors => (
     <div>
       <ul>
         {errors.map(error => (
@@ -59,10 +59,21 @@ const Login = () => {
         <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} />
         <button type="submit" className="form-btn">Login</button>
       </form>
-
-      <div>{errors ? handleErrors() : null }</div>
+      {isLoading && <div>Loading...</div>}
+      <div>{errors ? handleErrors(errors) : null }</div>
     </>
   );
 };
 
-export default Login;
+const mapStateToProps = state => ({
+  isLoading: state.login.isLoading,
+  errors: state.login.errors,
+});
+
+const mapDispatchToProps = dispatch => ({
+  loginInit: () => dispatch(loginInit),
+  loginSuccess: () => dispatch(loginSuccess),
+  loginFailure: () => dispatch(loginFailure),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

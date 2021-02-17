@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   login: {
     isLoggedinUser: false,
     isLoading: false,
-    isError: false,
+    errors: [],
   },
 
   signup: {

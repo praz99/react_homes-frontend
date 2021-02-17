@@ -25,8 +25,9 @@ export const loginSuccess = () => ({
   type: AUTH_SUCCESS,
 });
 
-export const loginFailure = () => ({
+export const loginFailure = error => ({
   type: AUTH_FAILURE,
+  payload: error,
 });
 
 export const dataFetchStart = () => ({
