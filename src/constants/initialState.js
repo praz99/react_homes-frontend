@@ -22,6 +22,6 @@ const INITIAL_STATE = {
     isLoading: false,
     isError: false,
   },
-}
+};
 
 export default INITIAL_STATE;

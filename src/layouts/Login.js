@@ -7,7 +7,15 @@ import { loginInit, loginSuccess, loginFailure } from '../actions/index';
 import { API_MAIN, API_LOGIN } from '../constants/api';
 import '../styles/Login.css';
 
-const Login = ({ loginInit, loginSuccess, loginFailure, isLoading, errors }) => {
+const Login = (
+  {
+    logininit,
+    loginsuccess,
+    loginfailure,
+    isLoading,
+    errors,
+  },
+) => {
   const history = useHistory();
   const [state, setState] = useState({
     username: '',
@@ -22,7 +30,7 @@ const Login = ({ loginInit, loginSuccess, loginFailure, isLoading, errors }) => 
     setState({ ...state, [name]: value });
   };
 
-  const { username, password, errors } = state;
+  const { username, password } = state;
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -30,16 +38,16 @@ const Login = ({ loginInit, loginSuccess, loginFailure, isLoading, errors }) => 
       username,
       password,
     };
-    loginInit();
+    logininit();
     axios.post(`${API_MAIN}${API_LOGIN}`, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.auth_token) {
-          loginSuccess();
+          loginsuccess();
           sessionStorage.setItem('auth_token', response.data.auth_token);
           history.push('/houses');
         }
       })
-      .catch(error => loginFailure(error));
+      .catch(error => loginfailure(error));
   };
 
   const handleErrors = errors => (
@@ -59,10 +67,22 @@ const Login = ({ loginInit, loginSuccess, loginFailure, isLoading, errors }) => 
         <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} />
         <button type="submit" className="form-btn">Login</button>
       </form>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <div>Please wait...</div>}
       <div>{errors ? handleErrors(errors) : null }</div>
     </>
   );
+};
+
+Login.propTypes = {
+  logininit: PropTypes.func.isRequired,
+  loginsuccess: PropTypes.func.isRequired,
+  loginfailure: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+};
+
+Login.defaultProps = {
+  isLoading: false,
 };
 
 const mapStateToProps = state => ({
@@ -71,9 +91,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  loginInit: () => dispatch(loginInit),
-  loginSuccess: () => dispatch(loginSuccess),
-  loginFailure: () => dispatch(loginFailure),
-})
+  logininit: () => dispatch(loginInit()),
+  loginsuccess: () => dispatch(loginSuccess()),
+  loginfailure: () => dispatch(loginFailure()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

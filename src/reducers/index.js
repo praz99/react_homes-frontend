@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import INITIAL_STATE from '../constants/initialState';
-import loginReducer from '../reducers/loginReducer';
+import loginReducer from './loginReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
