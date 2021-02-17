@@ -10,7 +10,12 @@ button {
   margin: 2px;
 }
 
-input:focus-within {
+input:focus-within,
+button:focus-within {
   border: none;
   outline: none;
+}
+
+button:hover {
+  background: #c3bbbb;
 }

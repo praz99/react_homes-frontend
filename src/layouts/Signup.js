@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/Signup.css';
 
 const Signup = () => {
   const history = useHistory();
@@ -49,9 +50,9 @@ const Signup = () => {
   );
 
   return (
-    <div>
+    <div className="signup-container">
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="signup-form">
         <input
           placeholder="username"
           type="text"

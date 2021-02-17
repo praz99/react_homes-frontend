@@ -1,0 +1,24 @@
+.signup-container {
+  text-align: center;
+  width: 40vw;
+  margin: 2.5em auto;
+  background: #ab913cd1;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.signup-form {
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form input {
+  height: 20px;
+  margin: 5px 0;
+}
+
+.signup-form button {
+  margin: 5px 0;
+  padding: 8px;
+}

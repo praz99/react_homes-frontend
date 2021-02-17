@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../styles/House.css';
 
 const House = ({ house }) => (
-  <div className="house-container">
+  <div className="house-container" style={{ backgroundImage: `url(${house.image})` }}>
     <Link to={`/house/${house.id}`} className="house-button">See Details</Link>
   </div>
 );
