@@ -1,12 +1,12 @@
 const INITIAL_STATE = {
   login: {
-    isLoggedInUser: false,
+    isLoggedinUser: false,
     isLoading: false,
     isError: false,
   },
 
   signup: {
-    isLoggedInUser: false,
+    isLoggedinUser: false,
     isLoading: false,
     isError: false,
   },
