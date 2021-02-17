@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import '../styles/Login.css';
 
 const Login = () => {
   const [state, setState] = useState({
@@ -51,9 +52,9 @@ const Login = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <input type="text" name="username" placeholder="username" value={state.username} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="pssword" value={state.password} onChange={handleChange} />
+        <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} />
         <button type="submit" className="form-btn">Login</button>
       </form>
 
