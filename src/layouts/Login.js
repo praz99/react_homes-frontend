@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
+import { API_MAIN, API_LOGIN } from '../constants/api';
 import '../styles/Login.css';
 
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
       username,
       password,
     };
-    axios.post('http://localhost:3001/auth/login', { user }, { withCredentials: true })
+    axios.post(`${API_MAIN}${API_LOGIN}`, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.auth_token) {
           sessionStorage.setItem('auth_token', response.data.auth_token);

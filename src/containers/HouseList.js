@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import House from '../components/House';
+import { API_MAIN, API_HOUSES } from '../constants/api';
 import '../styles/HouseList.css';
 
 const HouseList = () => {
@@ -9,7 +10,7 @@ const HouseList = () => {
     const fetchData = async () => {
       try {
         const result = await axios(
-          'http://localhost:3001/houses',
+          `${API_MAIN}${API_HOUSES}`,
           { headers: { Authorization: `${sessionStorage.getItem('auth_token')}` } },
           { withCredentials: true },
         );

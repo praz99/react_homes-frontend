@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { API_MAIN, API_SIGNUP } from '../constants/api';
 import '../styles/Signup.css';
 
 const Signup = () => {
@@ -27,7 +28,7 @@ const Signup = () => {
       password,
       passwordConfirmation,
     };
-    axios.post('http://localhost:3001/users', { user }, { withCredentials: true })
+    axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.auth_token) {
           sessionStorage.setItem('auth_token', response.data.auth_token);
