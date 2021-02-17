@@ -99,11 +99,12 @@ Signup.propTypes = {
   signupsuccess: PropTypes.func.isRequired,
   signupfailure: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
-  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 Signup.defaultProps = {
   isLoading: false,
+  errors: [],
 };
 
 const mapStateToProps = state => ({

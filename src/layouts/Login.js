@@ -78,11 +78,12 @@ Login.propTypes = {
   loginsuccess: PropTypes.func.isRequired,
   loginfailure: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
-  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
 };
 
 Login.defaultProps = {
   isLoading: false,
+  errors: [],
 };
 
 const mapStateToProps = state => ({
