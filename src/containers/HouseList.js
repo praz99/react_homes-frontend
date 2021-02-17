@@ -34,7 +34,6 @@ const HouseList = (
     fetchData();
   }, []);
 
-  console.log(houses);
   return (
     <>
       {isError && <div>Something went wrong. Please try again...</div>}
