@@ -13,8 +13,9 @@ export const signupSuccess = () => ({
   type: AUTH_SUCCESS,
 });
 
-export const signupFailure = () => ({
+export const signupFailure = error => ({
   type: AUTH_FAILURE,
+  payload: error,
 });
 
 export const loginInit = () => ({

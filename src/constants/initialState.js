@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   signup: {
     isLoggedinUser: false,
     isLoading: false,
-    isError: false,
+    errors: [],
   },
 
   data: {

@@ -7,7 +7,7 @@ const loginReducer = (state = {}, action) => {
     case AUTH_SUCCESS:
       return { ...state, isLoading: false, isLoggedinUser: true };
     case AUTH_FAILURE:
-      return { ...state, isLoading: false, isError: action.payload };
+      return { ...state, isLoading: false, errors: action.payload };
     default:
       return state;
   }

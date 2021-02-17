@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { API_MAIN, API_SIGNUP } from '../constants/api';
+import { signupInit, signupSuccess, signupFailure } from '../actions/index';
 import '../styles/Signup.css';
 
-const Signup = () => {
+const Signup = (
+  {
+    signupinit,
+    signupsuccess,
+    signupfailure,
+    isLoading,
+    errors,
+  },
+) => {
   const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
     passwordConfirmation: '',
-    errors: '',
   });
 
   const handleChange = ({ target: { name, value } }) => {
@@ -18,7 +28,7 @@ const Signup = () => {
   };
 
   const {
-    username, password, passwordConfirmation, errors,
+    username, password, passwordConfirmation,
   } = state;
 
   const handleSubmit = event => {
@@ -28,21 +38,19 @@ const Signup = () => {
       password,
       passwordConfirmation,
     };
+    signupinit();
     axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
       .then(response => {
         if (response.data.auth_token) {
+          signupsuccess();
           sessionStorage.setItem('auth_token', response.data.auth_token);
           history.push('/houses');
-        } else {
-          setState({
-            errors: response.errors,
-          });
         }
       })
-      .catch(error => error);
+      .catch(error => signupfailure(error));
   };
 
-  const handleErrors = () => (
+  const handleErrors = errors => (
     <div>
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
@@ -80,17 +88,32 @@ const Signup = () => {
           Sign Up
         </button>
       </form>
-      <div>
-        {
-          errors ? handleErrors() : null
-        }
-      </div>
+      {isLoading && <div>Please wait...</div>}
+      <div>{errors ? handleErrors(errors) : null }</div>
     </div>
   );
 };
 
-// redirect = () => {
-//   this.props.history.push('/');
-// }
+Signup.propTypes = {
+  signupinit: PropTypes.func.isRequired,
+  signupsuccess: PropTypes.func.isRequired,
+  signupfailure: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  errors: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+};
 
-export default Signup;
+Signup.defaultProps = {
+  isLoading: false,
+};
+
+const mapStateToProps = state => ({
+  isLoading: state.signup.isLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  signupinit: () => dispatch(signupInit()),
+  signupsuccess: () => dispatch(signupSuccess()),
+  signupfailure: () => dispatch(signupFailure()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
