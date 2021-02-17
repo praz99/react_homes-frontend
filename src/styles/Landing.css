@@ -1,6 +1,23 @@
 .landing-container {
   display: flex;
-  background: #97c027cc;
   height: 100vh;
   width: 100vw;
+  margin-top: 2.5em;
+}
+
+.landing-info {
+  margin: 0 0.5em 0 2.5em;
+  border-radius: 8px;
+  width: 65%;
+  height: 50vh;
+  background: #ab913cd1;
+  padding: 1em;
+}
+
+.landing-login {
+  margin:0 2.5em 0 0.5em;
+  border-radius: 8px;
+  height: 50vh;
+  background: #ab913cd1;
+  padding: 1em;
 }

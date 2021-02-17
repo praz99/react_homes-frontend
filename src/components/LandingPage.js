@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Login from '../layouts/Login';
 import '../styles/Landing.css';
 
 const LandingPage = () => (
@@ -11,9 +12,12 @@ const LandingPage = () => (
       <p>Book an appointment and visit the house anytime you want...</p>
     </div>
     <div className="landing-login">
-      <p>Lets get started</p>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Signup</Link>
+      <h3>Lets get started</h3>
+      <Login />
+      <div className="landing-signup-info">
+        <p>Don&#39;t have an account?</p>
+        <Link to="/signup">Signup</Link>
+      </div>
     </div>
   </div>
 );
