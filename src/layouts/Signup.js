@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
+  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -10,9 +11,6 @@ const Signup = () => {
     errors: '',
   });
 
-  // if (sessionStorage.getItem('auth-token')) {
-  //   return <Redirect to="/houses" />;
-  // }
   const handleChange = ({ target: { name, value } }) => {
     setState({ ...state, [name]: value });
   };
@@ -32,6 +30,7 @@ const Signup = () => {
       .then(response => {
         if (response.data.auth_token) {
           sessionStorage.setItem('auth_token', response.data.auth_token);
+          history.push('/houses');
         } else {
           setState({
             errors: response.errors,

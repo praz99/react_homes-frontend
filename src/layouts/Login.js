@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import '../styles/Login.css';
 
 const Login = () => {
+  const history = useHistory();
   const [state, setState] = useState({
     username: '',
     password: '',
@@ -30,7 +31,7 @@ const Login = () => {
       .then(response => {
         if (response.data.auth_token) {
           sessionStorage.setItem('auth_token', response.data.auth_token);
-          console.log(response.data.auth_token);
+          history.push('/houses');
         } else {
           setState({
             errors: response.errors,
