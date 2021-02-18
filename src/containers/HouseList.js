@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import House from '../components/House';
 import { API_MAIN, API_HOUSES } from '../constants/api';
 import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import Navbar from '../layouts/Navbar';
 import '../styles/HouseList.css';
 
 const HouseList = (
@@ -17,6 +19,10 @@ const HouseList = (
     houses,
   },
 ) => {
+  if (!sessionStorage.getItem('auth_token')) {
+    return <Redirect to="/" />;
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       fetchStart();
@@ -36,6 +42,7 @@ const HouseList = (
 
   return (
     <>
+      <Navbar />
       {isError && <div>Something went wrong. Please try again...</div>}
       {isLoading ? (<div>Loading data. Please wait...</div>) : (
         <div>
