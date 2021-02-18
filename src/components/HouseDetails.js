@@ -83,7 +83,7 @@ const HouseDetails = (
                     {house.description}
                   </div>
                   <div>Interested? Make an appointment to visit personally.</div>
-                  <Link to="/make-appointment">Make an Appointment</Link>
+                  <Link to={`${house.id}/make-appointment`}>Make an Appointment</Link>
                 </div>
               </div>
             ))}
