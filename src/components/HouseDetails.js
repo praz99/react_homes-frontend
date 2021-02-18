@@ -1,10 +1,14 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { detailsFetchStart, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 import { API_MAIN, API_HOUSES } from '../constants/api';
+import Footer from '../layouts/Footer';
+import Navbar from '../layouts/Navbar';
+import '../styles/HouseDetails.css';
 
 const HouseDetails = (
   {
@@ -16,6 +20,10 @@ const HouseDetails = (
     houses,
   },
 ) => {
+  if (!sessionStorage.getItem('auth_token')) {
+    return <Redirect to="/" />;
+  }
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,13 +47,50 @@ const HouseDetails = (
 
   return (
     <>
-      {isError && <div>Something went wrong. Please try again...</div>}
-      {isLoading ? (<div>Loading data. Please wait...</div>) : (
-        <div />
-        // houses.map(house => (
-        //   <div key={house.id}>{house.house_type}</div>
-        // ))
-      )}
+      <Navbar />
+      <div className="details-container">
+        {isError && <div>Something went wrong. Please try again...</div>}
+        {isLoading ? (<div>Loading data. Please wait...</div>) : (
+          <div>
+            {[houses].map((house, index) => (
+              <div key={index} className="details-show">
+                <div className="details-image">
+                  <img className="details-img" src="https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg" alt={house.house_type} />
+                </div>
+                <div className="details-info">
+                  <h3 className="house-type">{house.house_type}</h3>
+                  <div>
+                    Location:
+                    {' '}
+                    {house.location}
+                  </div>
+                  <div>
+                    Number of rooms:
+                    {' '}
+                    {house.number_of_rooms}
+                  </div>
+                  <div>
+                    Built on:
+                    {' '}
+                    {house.built_date}
+                  </div>
+                  <div>
+                    Price:
+                    {' '}
+                    {house.price}
+                  </div>
+                  <div>
+                    {house.description}
+                  </div>
+                  <div>Interested? Make an appointment to visit personally.</div>
+                  <Link to="/make-appointment">Make an Appointment</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <Footer />
     </>
   );
 };
@@ -77,3 +122,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails);
+/* eslint-enable react/no-array-index-key */

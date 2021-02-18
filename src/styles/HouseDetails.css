@@ -1,0 +1,25 @@
+.details-container {
+  margin-top: 50px;
+}
+
+.details-show {
+  padding: 1em 2em;
+  margin-top: 5em;
+  display: flex;
+}
+
+.details-image {
+  width: 60%;
+  border: 1px solid #6f1d1d;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.details-img {
+  width: 100%;
+}
+
+.details-info {
+  width: 40%;
+  border: 1px solid #6f1d1d;
+  margin-left: 10px;
+}
