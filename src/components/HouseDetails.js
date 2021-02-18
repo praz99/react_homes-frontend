@@ -43,8 +43,6 @@ const HouseDetails = (
     fetchDetail();
   }, []);
 
-  console.log(houses);
-
   return (
     <>
       <Navbar />

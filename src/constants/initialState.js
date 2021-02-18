@@ -22,9 +22,9 @@ const INITIAL_STATE = {
   },
 
   current_user: {
-    isLoading: '',
-    user: '',
-    appointments: '',
+    isLoading: false,
+    user: [],
+    appointments: [],
     isError: false,
   },
 };
