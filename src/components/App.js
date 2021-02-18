@@ -6,12 +6,14 @@ import HouseDetails from './HouseDetails';
 import LandingPage from './LandingPage';
 import NotFound from '../layouts/NotFound';
 import Appointment from './Appointment';
+import Profile from '../layouts/Profile';
 
 const App = () => (
   <div className="App">
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/profile" component={Profile} />
         <Route exact path="/houses" component={HouseList} />
         <Route exact path="/houses/:id" component={HouseDetails} />
         <Route exact path="/houses/:house_id/make-appointment" component={Appointment} />

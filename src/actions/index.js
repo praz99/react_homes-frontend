@@ -56,3 +56,16 @@ export const detailsFetchSuccess = data => ({
 export const detailsFetchFailure = () => ({
   type: FETCH_FAILURE,
 });
+
+export const profileFetchStart = () => ({
+  type: FETCH_START,
+});
+
+export const profileFetchSuccess = data => ({
+  type: FETCH_SUCCESS,
+  payload: data,
+});
+
+export const profileFetchFailure = () => ({
+  type: FETCH_FAILURE,
+});
