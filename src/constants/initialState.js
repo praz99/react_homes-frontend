@@ -1,12 +1,10 @@
 const INITIAL_STATE = {
   login: {
-    isLoggedinUser: false,
     isLoading: false,
     errors: [],
   },
 
   signup: {
-    isLoggedinUser: false,
     isLoading: false,
     errors: [],
   },
@@ -20,6 +18,13 @@ const INITIAL_STATE = {
   details: {
     houses: [],
     isLoading: false,
+    isError: false,
+  },
+
+  current_user: {
+    isLoading: '',
+    user: '',
+    appointments: '',
     isError: false,
   },
 };

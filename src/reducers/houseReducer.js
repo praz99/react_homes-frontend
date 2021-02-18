@@ -6,7 +6,7 @@ const houseReducer = (state = {}, action) => {
       return { ...state, isLoading: true };
     case FETCH_SUCCESS:
       return {
-        ...state, isLoading: false, isError: false, houses: action.payload,
+        ...state, isLoading: false, houses: action.payload,
       };
     case FETCH_FAILURE:
       return { ...state, isLoading: false, isError: true };

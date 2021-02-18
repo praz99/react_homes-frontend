@@ -5,7 +5,7 @@ const signupReducer = (state = {}, action) => {
     case AUTH_INIT:
       return { ...state, isLoading: true };
     case AUTH_SUCCESS:
-      return { ...state, isLoading: false, isLoggedinUser: true };
+      return { ...state, isLoading: false };
     case AUTH_FAILURE:
       return { ...state, isLoading: false, errors: action.payload };
     default:
