@@ -1,5 +1,10 @@
 .footer {
   background: #9e8227;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   height: 50px;
   display: flex;
   align-items: center;

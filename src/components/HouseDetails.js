@@ -55,7 +55,7 @@ const HouseDetails = (
             {[houses].map((house, index) => (
               <div key={index} className="details-show">
                 <div className="details-image">
-                  <img className="details-img" src="https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg" alt={house.house_type} />
+                  <img className="details-img" src={`${house.image}`} alt={house.house_type} />
                 </div>
                 <div className="details-info">
                   <h3 className="house-type">{house.house_type}</h3>
