@@ -1,4 +1,5 @@
 .houseList-container {
+  margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;

@@ -1,9 +1,48 @@
 .nav-container {
-  background: red;
+  background: #9e8227;
   height: 50px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
+  align-items: center;
+  padding: 0 1.5em;
+}
+
+.nav-left {
+  width: 50%;
+  font-size: 30px;
+  color: #6f1d1d;
+}
+
+.nav-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.profile-button,
+.logout-button {
+  color: #6f1d1d;
+  border: 1px solid #6f1d1d;
+  padding: 3px;
+  font-size: 15px;
+}
+
+.logout-button {
+  background: none;
+  margin-left: 10px;
+}
+
+.profile-button:hover,
+.logout-button:hover {
+  background: #6f1d1d;
+  color: #9e8227;
+}
+
+.logout-button:focus-within {
+  border: none;
+  outline: none;
 }
