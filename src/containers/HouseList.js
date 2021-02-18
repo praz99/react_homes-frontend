@@ -7,6 +7,7 @@ import House from '../components/House';
 import { API_MAIN, API_HOUSES } from '../constants/api';
 import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
 import Navbar from '../layouts/Navbar';
+import Footer from '../layouts/Footer';
 import '../styles/HouseList.css';
 
 const HouseList = (
@@ -53,6 +54,7 @@ const HouseList = (
           ) : <div>No data</div>}
         </div>
       )}
+      <Footer />
     </>
   );
 };
