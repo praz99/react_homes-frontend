@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { API_MAIN, API_PROFILE } from '../constants/api';
 import { profileFetchStart, profileFetchSuccess, profileFetchFailure } from '../actions/index';
+import '../styles/Profile.css';
 
 const Profile = (
   {
@@ -49,30 +50,33 @@ const Profile = (
   return (
     <>
       <Navbar />
-      {isError && <div>Something went wrong. Please try again...</div>}
-      {isLoading ? (<div>Fetching data...Please wait.</div>) : (
-        <>
-          <h2>{username}</h2>
-          <div>
-            <table border="1">
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {date.map((dt, index) => (
-                  <tr key={index}>
-                    <td>{dt.toString().substr(0, 10)}</td>
-                    <td>{dt.toString().substr(11, 5)}</td>
+      <div className="profile-wrapper">
+        {isError && <div>Something went wrong. Please try again...</div>}
+        {isLoading ? (<div>Fetching data...Please wait.</div>) : (
+          <>
+            <h2 className="profile-username">{username}</h2>
+            <div className="profile-container">
+              <div className="table-heading">My Appointments</div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Time</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
+                </thead>
+                <tbody>
+                  {date.map((dt, index) => (
+                    <tr key={index}>
+                      <td>{dt.toString().substr(0, 10)}</td>
+                      <td>{dt.toString().substr(11, 5)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+      </div>
       <Footer />
     </>
   );
