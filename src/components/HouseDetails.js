@@ -56,32 +56,32 @@ const HouseDetails = (
                   <img className="details-img" src={`${house.image}`} alt={house.house_type} />
                 </div>
                 <div className="details-info">
-                  <h3 className="house-type">{house.house_type}</h3>
-                  <div>
+                  <h3 className="house-type house-details-info-bg">{house.house_type}</h3>
+                  <div className="house-details-info-bg">
                     Location:
                     {' '}
                     {house.location}
                   </div>
-                  <div>
+                  <div className="house-details-info-bg">
                     Number of rooms:
                     {' '}
                     {house.number_of_rooms}
                   </div>
-                  <div>
+                  <div className="house-details-info-bg">
                     Built on:
                     {' '}
                     {house.built_date}
                   </div>
-                  <div>
+                  <div className="house-details-info-bg">
                     Price:
                     {' '}
                     {house.price}
                   </div>
-                  <div>
+                  <div className="house-details-description">
                     {house.description}
                   </div>
-                  <div>Interested? Make an appointment to visit personally.</div>
-                  <Link to={`${house.id}/make-appointment`}>Make an Appointment</Link>
+                  <div className="appointment-prompt">Interested? Make an appointment to visit personally.</div>
+                  <div className="appointment-button"><Link to={`${house.id}/make-appointment`}>Make an Appointment</Link></div>
                 </div>
               </div>
             ))}

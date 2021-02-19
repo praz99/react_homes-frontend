@@ -22,4 +22,30 @@
   width: 40%;
   border: 1px solid #6f1d1d;
   margin-left: 10px;
+  padding: 1em;
+}
+
+.house-details-info-bg {
+  background-color: #d06a4382;
+  padding: 4px 0 4px 8px;
+  margin: 3px;
+}
+
+.appointment-prompt {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 14px;
+}
+
+.appointment-button {
+  color: #fff;
+  background-color: #6f1d1d;
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.appointment-button a {
+  color: #fff;
 }
