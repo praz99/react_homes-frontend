@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import { API_MAIN, API_PROFILE } from '../constants/api';
 import { profileFetchStart, profileFetchSuccess, profileFetchFailure } from '../actions/index';
 
@@ -34,30 +36,44 @@ const Profile = (
     fetchUser();
   }, []);
 
-  // console.log(user);
-  // console.log(appointments);
-  // console.log(typeof (appointments));
-  console.log(appointments.map(app => (
+  const username = [user].map(usr => (
+    usr.username
+  ));
+
+  const date = appointments.map(app => (
     [app].map(ap => (
-      ap.date
+      ap.date.split('T')
     ))
-  )));
+  ));
 
   return (
     <>
+      <Navbar />
       {isError && <div>Something went wrong. Please try again...</div>}
       {isLoading ? (<div>Fetching data...Please wait.</div>) : (
         <>
-          {[user].map((usr, index) => (
-            <h2 key={index}>{usr.username}</h2>
-          ))}
-          {appointments.map(app => (
-            [app].map((ap, index) => (
-              <p key={index}>{ap.date}</p>
-            ))
-          ))}
+          <h2>{username}</h2>
+          <div>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {date.map((dt, index) => (
+                  <tr key={index}>
+                    <td>{dt.toString().substr(0, 10)}</td>
+                    <td>{dt.toString().substr(11, 5)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
+      <Footer />
     </>
   );
 };
