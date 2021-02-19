@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { loginInit, loginSuccess, loginFailure } from '../actions/index';
 import { API_MAIN, API_LOGIN } from '../constants/api';
 import '../styles/Login.css';
@@ -67,7 +68,7 @@ const Login = (
         <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} />
         <button type="submit" className="form-btn">Login</button>
       </form>
-      {isLoading && <div>Please wait...</div>}
+      {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
       <div>{errors ? handleErrors(errors) : null }</div>
     </>
   );

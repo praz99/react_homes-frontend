@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { detailsFetchStart, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
 import { API_MAIN, API_HOUSES } from '../constants/api';
 import Footer from '../layouts/Footer';
@@ -48,7 +49,7 @@ const HouseDetails = (
       <Navbar />
       <div className="details-container">
         {isError && <div>Something went wrong. Please try again...</div>}
-        {isLoading ? (<div>Loading data. Please wait...</div>) : (
+        {isLoading ? (<div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>) : (
           <div>
             {[houses].map((house, index) => (
               <div key={index} className="details-show">

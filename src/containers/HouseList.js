@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import House from '../components/House';
 import { API_MAIN, API_HOUSES } from '../constants/api';
 import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
@@ -45,7 +46,7 @@ const HouseList = (
     <>
       <Navbar />
       {isError && <div>Something went wrong. Please try again...</div>}
-      {isLoading ? (<div>Loading data. Please wait...</div>) : (
+      {isLoading ? (<div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>) : (
         <div>
           {houses && houses.length ? (
             <div className="houseList-container">

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { API_MAIN, API_PROFILE } from '../constants/api';
@@ -52,7 +53,7 @@ const Profile = (
       <Navbar />
       <div className="profile-wrapper">
         {isError && <div>Something went wrong. Please try again...</div>}
-        {isLoading ? (<div>Fetching data...Please wait.</div>) : (
+        {isLoading ? (<div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>) : (
           <>
             <h2 className="profile-username">{username}</h2>
             <div className="profile-container">

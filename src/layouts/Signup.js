@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
 import { API_MAIN, API_SIGNUP } from '../constants/api';
 import { signupInit, signupSuccess, signupFailure } from '../actions/index';
 import '../styles/Signup.css';
@@ -88,7 +89,7 @@ const Signup = (
           Sign Up
         </button>
       </form>
-      {isLoading && <div>Please wait...</div>}
+      {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
       <div>{errors ? handleErrors(errors) : null }</div>
     </div>
   );
