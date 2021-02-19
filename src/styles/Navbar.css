@@ -13,6 +13,9 @@
 .nav-left {
   width: 50%;
   font-size: 30px;
+}
+
+.nav-left a {
   color: #6f1d1d;
 }
 
