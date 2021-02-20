@@ -33,22 +33,30 @@ const Signup = (
   } = state;
 
   const handleSubmit = event => {
+    const pwCheck = document.getElementById('password-match-check');
+    if (password !== passwordConfirmation) {
+      pwCheck.innerHTML = 'Password doesnot match!';
+    } else {
+      const user = {
+        username,
+        password,
+        passwordConfirmation,
+      };
+      signupinit();
+      axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
+        .then(response => {
+          if (response.data.auth_token) {
+            signupsuccess();
+            sessionStorage.setItem('auth_token', response.data.auth_token);
+            history.push('/houses');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          signupfailure(error);
+        });
+    }
     event.preventDefault();
-    const user = {
-      username,
-      password,
-      passwordConfirmation,
-    };
-    signupinit();
-    axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
-      .then(response => {
-        if (response.data.auth_token) {
-          signupsuccess();
-          sessionStorage.setItem('auth_token', response.data.auth_token);
-          history.push('/houses');
-        }
-      })
-      .catch(error => signupfailure(error));
   };
 
   const handleErrors = errors => (
@@ -69,6 +77,7 @@ const Signup = (
           name="username"
           value={username}
           onChange={handleChange}
+          required
         />
         <input
           placeholder="password"
@@ -76,6 +85,7 @@ const Signup = (
           name="password"
           value={password}
           onChange={handleChange}
+          required
         />
         <input
           placeholder="password confirmation"
@@ -83,7 +93,10 @@ const Signup = (
           name="passwordConfirmation"
           value={passwordConfirmation}
           onChange={handleChange}
+          required
         />
+
+        <div className="password-match-check" id="password-match-check" />
 
         <button placeholder="submit" type="submit">
           Sign Up
