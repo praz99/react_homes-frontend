@@ -52,7 +52,6 @@ const Signup = (
           }
         })
         .catch(error => {
-          console.log(error);
           signupfailure(error);
         });
     }
