@@ -42,7 +42,7 @@ The backend API for this project created by me and can be found in [github](http
 
 ## Main Features<a name = "features"></a>
 
-- A proper authentication system has been implemented using JWT. Users are able to create a new account and login/logout securly.
+- A proper authentication system has been implemented using JWT. Users are able to create a new account and login/logout securely.
 - Users can see a list of different houses.
 - Users can see the details of a particular house.
 - Users can make an appointment on the date and time of their choice.
@@ -94,7 +94,7 @@ Run ```yarn test``` in the console to run the tests.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/praz99/appointments-backend/issues).
+Feel free to check the [issues page](https://github.com/praz99/appointments-frontend/issues).
 
 
 ## 👍 Show your support
