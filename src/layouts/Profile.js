@@ -57,7 +57,7 @@ const Profile = (
           <>
             <h2 className="profile-username">{username}</h2>
             <div className="profile-container">
-              <div className="table-heading">My Appointments</div>
+              <div className="table-heading" data-testid="appointments-heading">My Appointments</div>
               <table>
                 <thead>
                   <tr>
