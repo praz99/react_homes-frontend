@@ -49,7 +49,7 @@ The backend API for this project created by me and can be found in [github](http
 - Users can see all the appointments they have made in the Profile page.
 
 ## See Live<a name = "ll"></a>
-See live on [Heroku](https://praz-cocktailsdb.herokuapp.com/)
+See live on [Heroku](https://praz-appointments.herokuapp.com/)
 
 
 ## Getting Started <a name = "gs"></a>
