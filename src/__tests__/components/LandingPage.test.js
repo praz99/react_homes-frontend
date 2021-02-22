@@ -6,6 +6,6 @@ import LandingPage from '../../components/LandingPage';
 configure({ adapter: new Adapter() });
 
 it('renders LandingPage component correctly', () => {
-  const landing = shallow(<LandingPage />)
+  const landing = shallow(<LandingPage />);
   expect(landing).toMatchSnapshot();
 });

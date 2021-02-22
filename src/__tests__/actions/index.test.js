@@ -27,7 +27,7 @@ describe('actions', () => {
   });
 
   describe('signupFailure', () => {
-    const error = '422 (Unprocessable Entity)'
+    const error = '422 (Unprocessable Entity)';
     it('returns an object with type property and payload', () => {
       expect(signupFailure(error)).toEqual({
         type: 'AUTH_FAILURE',
@@ -49,7 +49,7 @@ describe('actions', () => {
   });
 
   describe('loginFailure', () => {
-    const error = '422 (Unprocessable Entity)'
+    const error = '422 (Unprocessable Entity)';
     it('returns an object with type property and payload', () => {
       expect(loginFailure(error)).toEqual({
         type: 'AUTH_FAILURE',
@@ -71,7 +71,7 @@ describe('actions', () => {
     it('returns an object with type property and payload', () => {
       expect(dataFetchSuccess(data)).toEqual({
         type: 'FETCH_SUCCESS',
-        payload:{
+        payload: {
           house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
         },
       });
@@ -97,7 +97,7 @@ describe('actions', () => {
     it('returns an object with type property and payload', () => {
       expect(detailsFetchSuccess(data)).toEqual({
         type: 'FETCH_SUCCESS',
-        payload:{
+        payload: {
           house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
         },
       });

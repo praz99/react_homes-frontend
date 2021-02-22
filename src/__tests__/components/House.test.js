@@ -15,7 +15,7 @@ const houseMount = (
   <MemoryRouter>
     <House house={houseNew} />
   </MemoryRouter>
-)
+);
 
 it('renders item component correctly', () => {
   const house = renderer.create(houseMount).toJSON();
@@ -25,5 +25,5 @@ it('renders item component correctly', () => {
 it('renders a link to see house details', () => {
   const { getByTestId } = render(houseMount);
   const link = getByTestId('house-link');
-  expect(link.innerHTML).toMatch('See Details')
+  expect(link.innerHTML).toMatch('See Details');
 });

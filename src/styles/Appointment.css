@@ -6,6 +6,7 @@
   text-align: center;
   margin: 5em 0 1em 0;
 }
+
 .appointment-form {
   margin: 0 auto;
   width: 30%;
@@ -23,4 +24,3 @@
 .cancel-appointment-button {
   width: 49%;
 }
-
