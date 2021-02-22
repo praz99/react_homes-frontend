@@ -3,7 +3,7 @@ import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE } from '../actions/index';
 const profileReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_START:
-      return { ...state, loading: true };
+      return { ...state, isLoading: true };
     case FETCH_SUCCESS:
       return {
         ...state,
