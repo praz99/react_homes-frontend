@@ -1,4 +1,4 @@
-const API_MAIN = 'http://localhost:3001//';
+const API_MAIN = 'http://praz-appointment-backend.herokuapp.com/';
 const API_SIGNUP = 'users/';
 const API_LOGIN = 'auth/login/';
 const API_HOUSES = 'houses/';
