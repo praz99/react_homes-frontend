@@ -19,6 +19,7 @@
   background: #bdbde67a;
   padding: 1em;
   position: relative;
+  border: 1px solid #bdbdec;
 }
 
 .landing-logo-container {
@@ -34,6 +35,7 @@
   height: 100%;
   background: #bdbde67a;
   padding: 1em;
+  border: 1px solid #bdbdec;
 }
 
 .landing-signup-info a {

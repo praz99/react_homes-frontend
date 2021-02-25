@@ -75,43 +75,47 @@ const Signup = (
 
   return (
     <div className="signup-container">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit} className="signup-form">
-        <input
-          placeholder="username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          placeholder="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-        <input
-          placeholder="password confirmation"
-          type="password"
-          name="password_confirmation"
-          value={password_confirmation}
-          onChange={handleChange}
-          required
-        />
+      <div className="signup-form-container">
+        <h1>Create your account</h1>
+        <form onSubmit={handleSubmit} className="signup-form">
+          <input
+            placeholder="username"
+            type="text"
+            name="username"
+            value={username}
+            onChange={handleChange}
+            required
+          />
+          <input
+            placeholder="password"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+          <input
+            placeholder="password confirmation"
+            type="password"
+            name="password_confirmation"
+            value={password_confirmation}
+            onChange={handleChange}
+            required
+          />
 
-        <button placeholder="submit" type="submit">
-          Sign Up
-        </button>
-        <button placeholder="submit" type="button" onClick={resetForm}>
-          Cancel
-        </button>
-      </form>
-      {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
-      <div className="password-match-check" id="password-match-check" />
-      <div>{errors ? handleErrors(errors) : null }</div>
+          <div className="signup-buttons">
+            <button placeholder="submit" type="submit" className="signup-submit-button">
+              Sign Up
+            </button>
+            <button placeholder="submit" type="button" className="signup-cancel-button" onClick={resetForm}>
+              Cancel
+            </button>
+          </div>
+        </form>
+        {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
+        <div className="password-match-check" id="password-match-check" />
+        <div>{errors ? handleErrors(errors) : null }</div>
+      </div>
     </div>
   );
 };
