@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
-import axios from 'axios';
+import jwt from 'jwt-decode';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { API_MAIN, API_PROFILE } from '../constants/api';
 import { profileFetchStart, profileFetchSuccess, profileFetchFailure } from '../actions/index';
 import '../styles/Profile.css';
+import { profileCall } from '../utils/apiCalls';
 
 const Profile = (
   {
@@ -21,15 +21,12 @@ const Profile = (
     isError,
   },
 ) => {
+  const decoded = jwt(localStorage.getItem('auth_token'));
   useEffect(() => {
     const fetchUser = async () => {
       fetchStart();
       try {
-        const result = await axios(
-          `${API_MAIN}${API_PROFILE}`,
-          { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
-          { withCredentials: true },
-        );
+        const result = await profileCall(decoded.user_id);
         fetchSuccess(result.data);
       } catch (error) {
         fetchFailure();
