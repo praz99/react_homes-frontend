@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../styles/Navbar.css';
+import logo from '../images/logo.png';
 
 const Navbar = () => {
   const userStatus = localStorage.getItem('auth_token');
@@ -14,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="nav-container">
       <div className="nav-left">
-        <Link to="/houses">The Homes</Link>
+        <Link to="/houses"><img src={logo} alt="logo" /></Link>
       </div>
       <div className="nav-right">
         {

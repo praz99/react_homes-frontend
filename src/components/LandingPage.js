@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Login from '../layouts/Login';
 import '../styles/Landing.css';
+import logo from '../images/logo.png';
 
 const LandingPage = () => (
   <div className="landing-container">
     <div className="landing-info">
-      <h1>Welcome to The Homes</h1>
-      <p>Explore through the variety of houses.</p>
-      <p>Find your dream house..</p>
-      <p>Book an appointment and visit the house anytime you want...</p>
+      <div className="landing-logo-container">
+        <img className="landing-logo" src={logo} alt="logo" />
+      </div>
     </div>
     <div className="landing-login">
       <h3>Lets get started</h3>
