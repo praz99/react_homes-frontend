@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import {
   API_MAIN,
@@ -20,3 +21,4 @@ export {
   houseDetailsCall,
   appointmentCall,
 };
+/* eslint-enable camelcase */

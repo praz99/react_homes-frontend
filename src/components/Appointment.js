@@ -18,14 +18,19 @@ const Appointment = () => {
   };
 
   const { date } = state;
+  const renderBox = document.getElementById('render-box');
 
   const handleSubmit = event => {
     event.preventDefault();
     appointmentCall(house_id, date)
       .then(response => {
-        console.log(response);
-        setTimeout(() => history.push(`/houses/${house_id}`), 5000);
-      }).catch(error => error);
+        if (response.status === 201) {
+          renderBox.innerText = 'Appointment created successfully';
+        }
+        setTimeout(() => history.push(`/houses/${house_id}`), 3000);
+      }).catch(error => {
+        renderBox.innerText = error.response.data.message;
+      });
   };
 
   return (
@@ -40,6 +45,7 @@ const Appointment = () => {
             <button type="button" className="cancel-appointment-button" onClick={() => history.push(`/houses/${house_id}`)}>Cancel</button>
           </div>
         </form>
+        <div id="render-box" />
       </div>
       <Footer />
     </>
