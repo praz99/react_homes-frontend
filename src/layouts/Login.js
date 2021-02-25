@@ -48,7 +48,7 @@ const Login = (
           history.push('/houses');
         }
       })
-      .catch(error => loginfailure(error));
+      .catch(error => loginfailure(error.response.data.message));
   };
 
   const handleErrors = errors => (
@@ -65,7 +65,7 @@ const Login = (
     <>
       <form onSubmit={handleSubmit} className="login-form">
         <input type="text" name="username" placeholder="username" value={state.username} onChange={handleChange} required />
-        <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} />
+        <input type="password" name="password" placeholder="password" value={state.password} onChange={handleChange} required />
         <button type="submit" className="form-btn">Login</button>
       </form>
       {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
@@ -95,7 +95,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   logininit: () => dispatch(loginInit()),
   loginsuccess: () => dispatch(loginSuccess()),
-  loginfailure: () => dispatch(loginFailure()),
+  loginfailure: err => dispatch(loginFailure(err)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

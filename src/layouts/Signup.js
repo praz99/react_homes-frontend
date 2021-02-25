@@ -26,8 +26,15 @@ const Signup = (
     password_confirmation: '',
   });
 
+  const baseState = state;
+
   const handleChange = ({ target: { name, value } }) => {
     setState({ ...state, [name]: value });
+  };
+
+  const resetForm = () => {
+    setState({ ...baseState });
+    history.push('/');
   };
 
   const handleErrors = errs => (
@@ -97,13 +104,15 @@ const Signup = (
           required
         />
 
-        <div className="password-match-check" id="password-match-check" />
-
         <button placeholder="submit" type="submit">
           Sign Up
         </button>
+        <button placeholder="submit" type="button" onClick={resetForm}>
+          Cancel
+        </button>
       </form>
       {isLoading && <div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>}
+      <div className="password-match-check" id="password-match-check" />
       <div>{errors ? handleErrors(errors) : null }</div>
     </div>
   );
