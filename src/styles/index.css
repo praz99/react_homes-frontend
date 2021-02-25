@@ -14,3 +14,14 @@ body {
   font-family: 'Varta', sans-serif;    
   background: rgba(218, 239, 255, 0.871);
 }
+
+ul {
+  list-style-type: none;
+}
+
+.error {
+  background: #e8474799;
+  border: 1px solid #e84747;
+  border-radius: 3px;
+  margin: 3px;
+}

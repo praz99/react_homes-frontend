@@ -36,11 +36,9 @@ const Signup = (
   };
 
   const handleErrors = errs => (
-    <div>
-      <ul>
-        {errs.map(err => <li key={err}>{err}</li>)}
-      </ul>
-    </div>
+    <ul>
+      {errs.map(err => <li key={err} className="error">{err}</li>)}
+    </ul>
   );
 
   const {
@@ -50,7 +48,10 @@ const Signup = (
   const handleSubmit = event => {
     const pwCheck = document.getElementById('password-match-check');
     if (password !== password_confirmation) {
-      pwCheck.innerHTML = 'Passwords not matching';
+      const showPwErr = document.createElement('div');
+      showPwErr.classList.add('error');
+      showPwErr.innerHTML = 'Passwords not matching!';
+      pwCheck.appendChild(showPwErr);
     } else {
       const user = {
         username,
