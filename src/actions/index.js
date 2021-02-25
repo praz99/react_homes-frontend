@@ -1,71 +1,84 @@
-export const AUTH_INIT = 'AUTH_INIT';
-export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const AUTH_FAILURE = 'AUTH_FAILURE';
-export const FETCH_START = 'FETCH_START';
-export const FETCH_SUCCESS = 'FETCH_SUCCESS';
-export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const SIGNUP_INIT = 'SIGNUP_INIT';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+
+export const LOGIN_INIT = 'LOGIN_INIT';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const DATA_FETCH_START = 'DATA_FETCH_START';
+export const DATA_FETCH_SUCCESS = 'DATA_FETCH_SUCCESS';
+export const DATA_FETCH_FAILURE = 'DATA_FETCH_FAILURE';
+
+export const DETAILS_FETCH_START = 'DETAILS_FETCH_START';
+export const DETAILS_FETCH_SUCCESS = 'DETAILS_FETCH_SUCCESS';
+export const DETAILS_FETCH_FAILURE = 'DETAILS_FETCH_FAILURE';
+
+export const PROFILE_FETCH_START = 'PROFILE_FETCH_START';
+export const PROFILE_FETCH_SUCCESS = 'PROFILE_FETCH_SUCCESS';
+export const PROFILE_FETCH_FAILURE = 'PROFILE_FETCH_FAILURE';
 
 export const signupInit = () => ({
-  type: AUTH_INIT,
+  type: SIGNUP_INIT,
 });
 
 export const signupSuccess = () => ({
-  type: AUTH_SUCCESS,
+  type: SIGNUP_SUCCESS,
 });
 
 export const signupFailure = error => ({
-  type: AUTH_FAILURE,
+  type: SIGNUP_FAILURE,
   payload: error,
 });
 
 export const loginInit = () => ({
-  type: AUTH_INIT,
+  type: LOGIN_INIT,
 });
 
 export const loginSuccess = () => ({
-  type: AUTH_SUCCESS,
+  type: LOGIN_SUCCESS,
 });
 
 export const loginFailure = error => ({
-  type: AUTH_FAILURE,
+  type: LOGIN_FAILURE,
   payload: error,
 });
 
 export const dataFetchStart = () => ({
-  type: FETCH_START,
+  type: DATA_FETCH_START,
 });
 
 export const dataFetchSuccess = data => ({
-  type: FETCH_SUCCESS,
+  type: DATA_FETCH_SUCCESS,
   payload: data,
 });
 
 export const dataFetchFailure = () => ({
-  type: FETCH_FAILURE,
+  type: DATA_FETCH_FAILURE,
 });
 
 export const detailsFetchStart = () => ({
-  type: FETCH_START,
+  type: DETAILS_FETCH_START,
 });
 
 export const detailsFetchSuccess = data => ({
-  type: FETCH_SUCCESS,
+  type: DETAILS_FETCH_SUCCESS,
   payload: data,
 });
 
 export const detailsFetchFailure = () => ({
-  type: FETCH_FAILURE,
+  type: DETAILS_FETCH_FAILURE,
 });
 
 export const profileFetchStart = () => ({
-  type: FETCH_START,
+  type: PROFILE_FETCH_START,
 });
 
 export const profileFetchSuccess = data => ({
-  type: FETCH_SUCCESS,
+  type: PROFILE_FETCH_SUCCESS,
   payload: data,
 });
 
 export const profileFetchFailure = () => ({
-  type: FETCH_FAILURE,
+  type: PROFILE_FETCH_FAILURE,
 });

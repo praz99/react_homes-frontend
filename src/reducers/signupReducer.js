@@ -1,12 +1,12 @@
-import { AUTH_INIT, AUTH_SUCCESS, AUTH_FAILURE } from '../actions/index';
+import { SIGNUP_INIT, SIGNUP_SUCCESS, SIGNUP_FAILURE } from '../actions/index';
 
 const signupReducer = (state = {}, action) => {
   switch (action.type) {
-    case AUTH_INIT:
+    case SIGNUP_INIT:
       return { ...state, isLoading: true };
-    case AUTH_SUCCESS:
+    case SIGNUP_SUCCESS:
       return { ...state, isLoading: false };
-    case AUTH_FAILURE:
+    case SIGNUP_FAILURE:
       return { ...state, isLoading: false, errors: [...state.errors, action.payload] };
     default:
       return state;
