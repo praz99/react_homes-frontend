@@ -23,7 +23,7 @@ const Login = (
     password: '',
   });
 
-  if (sessionStorage.getItem('auth_token')) {
+  if (localStorage.getItem('auth_token')) {
     return <Redirect to="/houses" />;
   }
 
@@ -44,7 +44,7 @@ const Login = (
       .then(response => {
         if (response.data.auth_token) {
           loginsuccess();
-          sessionStorage.setItem('auth_token', response.data.auth_token);
+          localStorage.setItem('auth_token', response.data.auth_token);
           history.push('/houses');
         }
       })

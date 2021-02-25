@@ -5,11 +5,11 @@ import { Link, useHistory } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
-  const userStatus = sessionStorage.getItem('auth_token');
+  const userStatus = localStorage.getItem('auth_token');
   const history = useHistory();
 
   const handleLogout = () => {
-    sessionStorage.clear();
+    localStorage.clear();
     history.push('/');
   };
 

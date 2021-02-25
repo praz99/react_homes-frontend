@@ -64,7 +64,7 @@ const Signup = (
         .then(response => {
           if (response.data.auth_token) {
             signupsuccess();
-            sessionStorage.setItem('auth_token', response.data.auth_token);
+            localStorage.setItem('auth_token', response.data.auth_token);
             history.push('/houses');
           }
         })

@@ -21,7 +21,7 @@ const HouseDetails = (
     houses,
   },
 ) => {
-  if (!sessionStorage.getItem('auth_token')) {
+  if (!localStorage.getItem('auth_token')) {
     return <Redirect to="/" />;
   }
 
@@ -33,7 +33,7 @@ const HouseDetails = (
       try {
         const result = await axios(
           `${API_MAIN}${API_HOUSES}${id}`,
-          { headers: { Authorization: `${sessionStorage.getItem('auth_token')}` } },
+          { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
           { withCredentials: true },
         );
         fetchSuccess(result.data);

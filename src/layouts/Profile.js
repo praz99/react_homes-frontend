@@ -27,7 +27,7 @@ const Profile = (
       try {
         const result = await axios(
           `${API_MAIN}${API_PROFILE}`,
-          { headers: { Authorization: `${sessionStorage.getItem('auth_token')}` } },
+          { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
           { withCredentials: true },
         );
         fetchSuccess(result.data);

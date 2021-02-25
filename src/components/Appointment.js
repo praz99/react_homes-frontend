@@ -26,7 +26,7 @@ const Appointment = () => {
     axios.post(
       `${API_MAIN}${API_HOUSES}${house_id}${API_APPOINTMENT}`,
       { date },
-      { headers: { Authorization: `${sessionStorage.getItem('auth_token')}` } },
+      { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
       { withCredentials: true },
     ).then(response => {
       console.log(response);
