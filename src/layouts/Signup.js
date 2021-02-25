@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -21,26 +23,34 @@ const Signup = (
   const [state, setState] = useState({
     username: '',
     password: '',
-    passwordConfirmation: '',
+    password_confirmation: '',
   });
 
   const handleChange = ({ target: { name, value } }) => {
     setState({ ...state, [name]: value });
   };
 
+  const handleErrors = errs => (
+    <div>
+      <ul>
+        {errs.map(err => <li key={err}>{err}</li>)}
+      </ul>
+    </div>
+  );
+
   const {
-    username, password, passwordConfirmation,
+    username, password, password_confirmation,
   } = state;
 
   const handleSubmit = event => {
     const pwCheck = document.getElementById('password-match-check');
-    if (password !== passwordConfirmation) {
-      pwCheck.innerHTML = 'Password doesnot match!';
+    if (password !== password_confirmation) {
+      pwCheck.innerHTML = 'Passwords not matching';
     } else {
       const user = {
         username,
         password,
-        passwordConfirmation,
+        password_confirmation,
       };
       signupinit();
       axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
@@ -52,19 +62,11 @@ const Signup = (
           }
         })
         .catch(error => {
-          signupfailure(error);
+          signupfailure(error.response.data.message);
         });
     }
     event.preventDefault();
   };
-
-  const handleErrors = errors => (
-    <div>
-      <ul>
-        {errors.map(error => <li key={error}>{error}</li>)}
-      </ul>
-    </div>
-  );
 
   return (
     <div className="signup-container">
@@ -89,8 +91,8 @@ const Signup = (
         <input
           placeholder="password confirmation"
           type="password"
-          name="passwordConfirmation"
-          value={passwordConfirmation}
+          name="password_confirmation"
+          value={password_confirmation}
           onChange={handleChange}
           required
         />
@@ -122,12 +124,14 @@ Signup.defaultProps = {
 
 const mapStateToProps = state => ({
   isLoading: state.signup.isLoading,
+  errors: state.signup.errors,
 });
 
 const mapDispatchToProps = dispatch => ({
   signupinit: () => dispatch(signupInit()),
   signupsuccess: () => dispatch(signupSuccess()),
-  signupfailure: () => dispatch(signupFailure()),
+  signupfailure: err => dispatch(signupFailure(err)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+/* eslint-enable camelcase */
