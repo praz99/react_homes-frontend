@@ -1,6 +1,4 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import '../styles/Navbar.css';
 

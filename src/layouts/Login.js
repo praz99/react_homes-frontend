@@ -1,11 +1,10 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
+import { loginCall } from '../utils/apiCalls';
 import { loginInit, loginSuccess, loginFailure } from '../actions/index';
-import { API_MAIN, API_LOGIN } from '../constants/api';
 import '../styles/Login.css';
 
 const Login = (
@@ -40,7 +39,7 @@ const Login = (
       password,
     };
     logininit();
-    axios.post(`${API_MAIN}${API_LOGIN}`, { user }, { withCredentials: true })
+    loginCall(user)
       .then(response => {
         if (response.data.auth_token) {
           loginsuccess();

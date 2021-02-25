@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import House from '../components/House';
-import { API_MAIN, API_HOUSES } from '../constants/api';
 import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import { houseListCall } from '../utils/apiCalls';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
 import '../styles/HouseList.css';
@@ -29,11 +28,7 @@ const HouseList = (
     const fetchData = async () => {
       fetchStart();
       try {
-        const result = await axios(
-          `${API_MAIN}${API_HOUSES}`,
-          { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
-          { withCredentials: true },
-        );
+        const result = await houseListCall();
         fetchSuccess(result.data);
       } catch (error) {
         fetchFailure();

@@ -1,12 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { detailsFetchStart, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
-import { API_MAIN, API_HOUSES } from '../constants/api';
+import { houseDetailsCall } from '../utils/apiCalls';
 import Footer from '../layouts/Footer';
 import Navbar from '../layouts/Navbar';
 import '../styles/HouseDetails.css';
@@ -31,11 +30,7 @@ const HouseDetails = (
     const fetchDetail = async () => {
       fetchStart();
       try {
-        const result = await axios(
-          `${API_MAIN}${API_HOUSES}${id}`,
-          { headers: { Authorization: `${localStorage.getItem('auth_token')}` } },
-          { withCredentials: true },
-        );
+        const result = await houseDetailsCall(id);
         fetchSuccess(result.data);
       } catch (error) {
         fetchFailure();

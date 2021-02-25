@@ -1,12 +1,10 @@
 /* eslint-disable camelcase */
-
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { API_MAIN, API_SIGNUP } from '../constants/api';
+import { signupCall } from '../utils/apiCalls';
 import { signupInit, signupSuccess, signupFailure } from '../actions/index';
 import '../styles/Signup.css';
 
@@ -60,7 +58,7 @@ const Signup = (
         password_confirmation,
       };
       signupinit();
-      axios.post(`${API_MAIN}${API_SIGNUP}`, { user }, { withCredentials: true })
+      signupCall(user)
         .then(response => {
           if (response.data.auth_token) {
             signupsuccess();
