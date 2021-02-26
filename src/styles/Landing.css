@@ -4,10 +4,9 @@
   width: 100vw;
   margin-top: 2.5em;
   background-image: url('../images/illustration.svg');
-}
+  background-repeat: no-repeat;
+  background-position: center;
 
-.landing-illustration {
-  width: 100%;
 }
 
 .landing-info {
