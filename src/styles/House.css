@@ -19,16 +19,17 @@
 }
 
 .house-button {
-  background: #00000074;
-  color: white;
-  font-weight: 700;
-  border: 2px solid #6f1d1d;
+  background: #e5e5f5;
+  border: 1px solid #6f1d1d;
+  color: #6f1d1d;
+  font-size: 15px;
+  margin-top: 10px;
   text-align: center;
-  border-radius: 8px;
-  padding: 5px;
-  text-decoration: none;
+  padding: 8px 10px;
+  font-weight: 700;
 }
 
 .house-button:hover {
-  background: #000000ce;
+  color: #fff;
+  background-color: #6f1d1d;
 }

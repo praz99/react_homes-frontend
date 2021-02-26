@@ -23,4 +23,5 @@
 .create-appointment-button,
 .cancel-appointment-button {
   width: 49%;
+  border: 1px solid #6f1d1d;
 }
