@@ -3,6 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 import House from '../components/House';
 import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
 import { houseListCall } from '../utils/apiCalls';
@@ -45,7 +47,9 @@ const HouseList = (
         <div>
           {houses && houses.length ? (
             <div className="houseList-container">
-              {houses.map(house => (<House key={house.id} house={house} />))}
+              <Carousel showThumbs={false}>
+                {houses.map(house => (<House key={house.id} house={house} />))}
+              </Carousel>
             </div>
           ) : <div>No data</div>}
         </div>

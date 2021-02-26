@@ -1,19 +1,34 @@
 .house-container {
-  height: 40vh;
-  display: flex;
-  align-items: flex-end;
-  border: 1px solid black;
+  height: calc(96.93vh - 105px);
+  background: #e5e5f5;
+}
+
+.house-image-container {
+  height: 85%;
+  /* background: rgb(69,64,145);
+  background: linear-gradient(90deg, rgba(69,64,145,1) 0%, rgba(229,229,245,1) 5%, rgba(229,229,245,1) 95%, rgba(69,64,145,1) 100%); */
+}
+
+.house-image {
+  height: 100%;
+  object-fit: contain;
+}
+
+.house-button-container {
+  margin-top: 15px;
 }
 
 .house-button {
   background: #00000074;
   color: white;
   font-weight: 700;
-  border: 2px solid red;
+  border: 2px solid #6f1d1d;
   text-align: center;
   border-radius: 8px;
   padding: 5px;
-  margin: 10px;
-  width: 100%;
   text-decoration: none;
+}
+
+.house-button:hover {
+  background: #000000ce;
 }
