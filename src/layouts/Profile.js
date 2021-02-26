@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import jwt from 'jwt-decode';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -21,6 +22,10 @@ const Profile = (
     isError,
   },
 ) => {
+  if (!localStorage.getItem('auth_token')) {
+    return <Redirect to="/" />;
+  }
+
   const decoded = jwt(localStorage.getItem('auth_token'));
   useEffect(() => {
     const fetchUser = async () => {

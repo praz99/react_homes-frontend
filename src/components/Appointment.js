@@ -1,12 +1,16 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { Redirect, useParams, useHistory } from 'react-router-dom';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
 import { appointmentCall } from '../utils/apiCalls';
 import '../styles/Appointment.css';
 
 const Appointment = () => {
+  if (!localStorage.getItem('auth_token')) {
+    return <Redirect to="/" />;
+  }
+
   const { house_id } = useParams();
   const history = useHistory();
   const [state, setState] = useState({
