@@ -18,25 +18,26 @@ const Appointment = () => {
   };
 
   const { date } = state;
-  const renderBox = document.getElementById('render-box');
-
+  const appointmentContainer = document.getElementById('create-appointment-container');
   const handleSubmit = event => {
     event.preventDefault();
     appointmentCall(house_id, date)
       .then(response => {
         if (response.status === 201) {
+          const renderBox = document.createElement('div');
           renderBox.innerText = 'Appointment created successfully';
+          renderBox.classList.add('error');
+          renderBox.id = 'render-box';
+          appointmentContainer.appendChild(renderBox);
         }
         setTimeout(() => history.push(`/houses/${house_id}`), 3000);
-      }).catch(error => {
-        renderBox.innerText = error.response.data.message;
-      });
+      }).catch(error => error);
   };
 
   return (
     <>
       <Navbar />
-      <div className="create-appointment-container">
+      <div className="create-appointment-container" id="create-appointment-container">
         <div className="create-appointment-heading">Please choose a date and time for the appointment.</div>
         <form onSubmit={handleSubmit} className="appointment-form">
           <input type="datetime-local" name="date" placeholder="date" value={state.date} onChange={handleChange} required />
@@ -45,7 +46,7 @@ const Appointment = () => {
             <button type="button" className="cancel-appointment-button" onClick={() => history.push(`/houses/${house_id}`)}>Cancel</button>
           </div>
         </form>
-        <div id="render-box" />
+        {/* <div id="render-box" className="error">Appointment created successfully</div> */}
       </div>
       <Footer />
     </>

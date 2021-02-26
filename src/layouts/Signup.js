@@ -37,7 +37,7 @@ const Signup = (
 
   const handleErrors = errs => (
     <ul>
-      {errs.map(err => <li key={err} className="error">{err}</li>)}
+      {errs.map(err => <li key={err} className="error">{err.split(':')[1]}</li>)}
     </ul>
   );
 

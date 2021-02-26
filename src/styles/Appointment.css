@@ -25,3 +25,9 @@
   width: 49%;
   border: 1px solid #6f1d1d;
 }
+
+#render-box {
+  text-align: center;
+  width: 29.5%;
+  margin: 10px auto;
+}
