@@ -115,6 +115,7 @@ Give a ⭐️ if you like this project!
 
 ## :clap: Acknowledgements
 - [Microverse](https://www.microverse.org/)
+- All the images of houses used in this app are taken from [unsplash](https://unsplash.com/) and belong to the respective owners.
 
 ## 📝 License
 
