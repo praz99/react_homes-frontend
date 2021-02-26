@@ -34,16 +34,28 @@ The backend API for this project created by me and can be found in [github](http
 
 ## Screenshots<a name = "ss"></a>
 
-![screenshot](src/images/signup_page.png)
-![screenshot](src/images/login_page.png)
-![screenshot](src/images/house_details.png)
+### Signup
+![screenshot](src/images/signup.png)
+
+### Login
+![screenshot](src/images/login.png)
+
+### House (Carousel)
+![screenshot](src/images/carousel-slide.png)
+
+### House (Details)
+![screenshot](src/images/details.png)
+
+### Make Appointment
 ![screenshot](src/images/make_appointment.png)
-![screenshot](src/images/profile_page.png)
+
+### Profile
+![screenshot](src/images/profile.png)
 
 ## Main Features<a name = "features"></a>
 
 - A proper authentication system has been implemented using JWT. Users are able to create a new account and login/logout securely.
-- Users can see a list of different houses.
+- Users can see a list of different houses. Houses are displayed using Carousel display.
 - Users can see the details of a particular house.
 - Users can make an appointment on the date and time of their choice.
 - Users can see all the appointments they have made in the Profile page.
