@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { loginCall } from '../utils/apiCalls';
-import { loginInit, loginSuccess, loginFailure } from '../actions/index';
+import { authInit, authSuccess, authFailureLogin } from '../actions/index';
 import '../styles/Login.css';
 
 const Login = (
@@ -87,14 +87,14 @@ Login.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.login.isLoading,
-  errors: state.login.errors,
+  isLoading: state.auth.isLoading,
+  errors: state.auth.errors.loginErrors,
 });
 
 const mapDispatchToProps = dispatch => ({
-  logininit: () => dispatch(loginInit()),
-  loginsuccess: () => dispatch(loginSuccess()),
-  loginfailure: err => dispatch(loginFailure(err)),
+  logininit: () => dispatch(authInit()),
+  loginsuccess: () => dispatch(authSuccess()),
+  loginfailure: err => dispatch(authFailureLogin(err)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

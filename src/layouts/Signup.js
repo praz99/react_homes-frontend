@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { signupCall } from '../utils/apiCalls';
-import { signupInit, signupSuccess, signupFailure } from '../actions/index';
+import { authInit, authSuccess, authFailureSignup } from '../actions/index';
 import '../styles/Signup.css';
 
 const Signup = (
@@ -135,14 +135,14 @@ Signup.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.signup.isLoading,
-  errors: state.signup.errors,
+  isLoading: state.auth.isLoading,
+  errors: state.auth.errors.signupErrors,
 });
 
 const mapDispatchToProps = dispatch => ({
-  signupinit: () => dispatch(signupInit()),
-  signupsuccess: () => dispatch(signupSuccess()),
-  signupfailure: err => dispatch(signupFailure(err)),
+  signupinit: () => dispatch(authInit()),
+  signupsuccess: () => dispatch(authSuccess()),
+  signupfailure: err => dispatch(authFailureSignup(err)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

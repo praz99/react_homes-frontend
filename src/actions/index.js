@@ -1,10 +1,7 @@
-export const SIGNUP_INIT = 'SIGNUP_INIT';
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
-
-export const LOGIN_INIT = 'LOGIN_INIT';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const AUTH_INIT = 'AUTH_INIT';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAILURE_SIGNUP = 'AUTH_FAILURE_SIGNUP';
+export const AUTH_FAILURE_LOGIN = 'AUTH_FAILURE_LOGIN';
 
 export const DATA_FETCH_START = 'DATA_FETCH_START';
 export const DATA_FETCH_SUCCESS = 'DATA_FETCH_SUCCESS';
@@ -18,29 +15,21 @@ export const PROFILE_FETCH_START = 'PROFILE_FETCH_START';
 export const PROFILE_FETCH_SUCCESS = 'PROFILE_FETCH_SUCCESS';
 export const PROFILE_FETCH_FAILURE = 'PROFILE_FETCH_FAILURE';
 
-export const signupInit = () => ({
-  type: SIGNUP_INIT,
+export const authInit = () => ({
+  type: AUTH_INIT,
 });
 
-export const signupSuccess = () => ({
-  type: SIGNUP_SUCCESS,
+export const authSuccess = () => ({
+  type: AUTH_SUCCESS,
 });
 
-export const signupFailure = error => ({
-  type: SIGNUP_FAILURE,
+export const authFailureSignup = error => ({
+  type: AUTH_FAILURE_SIGNUP,
   payload: error,
 });
 
-export const loginInit = () => ({
-  type: LOGIN_INIT,
-});
-
-export const loginSuccess = () => ({
-  type: LOGIN_SUCCESS,
-});
-
-export const loginFailure = error => ({
-  type: LOGIN_FAILURE,
+export const authFailureLogin = error => ({
+  type: AUTH_FAILURE_LOGIN,
   payload: error,
 });
 

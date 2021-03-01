@@ -1,12 +1,10 @@
 const INITIAL_STATE = {
-  login: {
+  auth: {
     isLoading: false,
-    errors: [],
-  },
-
-  signup: {
-    isLoading: false,
-    errors: [],
+    errors: {
+      signupErrors: [],
+      loginErrors: [],
+    },
   },
 
   data: {
