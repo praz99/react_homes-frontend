@@ -50,7 +50,6 @@ const Appointment = () => {
             <button type="button" className="cancel-appointment-button" onClick={() => history.push(`/houses/${house_id}`)}>Cancel</button>
           </div>
         </form>
-        {/* <div id="render-box" className="error">Appointment created successfully</div> */}
       </div>
       <Footer />
     </>
