@@ -1,58 +1,42 @@
 import {
-  signupInit,
-  signupSuccess,
-  signupFailure,
-  loginInit,
-  loginSuccess,
-  loginFailure,
+  authInit,
+  authSuccess,
+  authFailureSignup,
+  authFailureLogin,
   dataFetchStart,
-  dataFetchSuccess,
+  dataFetchSuccessList,
+  dataFetchSuccessDetails,
   dataFetchFailure,
-  detailsFetchStart,
-  detailsFetchSuccess,
-  detailsFetchFailure,
 } from '../../actions/index';
 
 describe('actions', () => {
-  describe('signupInit', () => {
+  describe('authInit', () => {
     it('returns an object with type property', () => {
-      expect(signupInit()).toEqual({ type: 'AUTH_INIT' });
+      expect(authInit()).toEqual({ type: 'AUTH_INIT' });
     });
   });
 
-  describe('signupSuccess', () => {
+  describe('authSuccess', () => {
     it('returns an object with type property', () => {
-      expect(signupSuccess()).toEqual({ type: 'AUTH_SUCCESS' });
+      expect(authSuccess()).toEqual({ type: 'AUTH_SUCCESS' });
     });
   });
 
-  describe('signupFailure', () => {
+  describe('authFailureSignup', () => {
     const error = '422 (Unprocessable Entity)';
-    it('returns an object with type property and payload', () => {
-      expect(signupFailure(error)).toEqual({
-        type: 'AUTH_FAILURE',
+    it('returns an object with type property and error message as payload', () => {
+      expect(authFailureSignup(error)).toEqual({
+        type: 'AUTH_FAILURE_SIGNUP',
         payload: error,
       });
     });
   });
 
-  describe('loginInit', () => {
-    it('returns an object with type property', () => {
-      expect(loginInit()).toEqual({ type: 'AUTH_INIT' });
-    });
-  });
-
-  describe('loginSuccess', () => {
-    it('returns an object with type property', () => {
-      expect(loginSuccess()).toEqual({ type: 'AUTH_SUCCESS' });
-    });
-  });
-
-  describe('loginFailure', () => {
+  describe('authFailureLogin', () => {
     const error = '422 (Unprocessable Entity)';
     it('returns an object with type property and payload', () => {
-      expect(loginFailure(error)).toEqual({
-        type: 'AUTH_FAILURE',
+      expect(authFailureLogin(error)).toEqual({
+        type: 'AUTH_FAILURE_LOGIN',
         payload: error,
       });
     });
@@ -60,17 +44,31 @@ describe('actions', () => {
 
   describe('dataFetchStart', () => {
     it('returns an object with type property', () => {
-      expect(dataFetchStart()).toEqual({ type: 'FETCH_START' });
+      expect(dataFetchStart()).toEqual({ type: 'DATA_FETCH_START' });
     });
   });
 
-  describe('dataFetchSuccess', () => {
+  describe('dataFetchSuccessList', () => {
     const data = {
       house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
     };
     it('returns an object with type property and payload', () => {
-      expect(dataFetchSuccess(data)).toEqual({
-        type: 'FETCH_SUCCESS',
+      expect(dataFetchSuccessList(data)).toEqual({
+        type: 'DATA_FETCH_SUCCESS_LIST',
+        payload: {
+          house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
+        },
+      });
+    });
+  });
+
+  describe('dataFetchSuccessDetails', () => {
+    const data = {
+      house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
+    };
+    it('returns an object with type property and payload', () => {
+      expect(dataFetchSuccessDetails(data)).toEqual({
+        type: 'DATA_FETCH_SUCCESS_DETAILS',
         payload: {
           house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
         },
@@ -80,33 +78,7 @@ describe('actions', () => {
 
   describe('dataFetchFailure', () => {
     it('returns an object with type property', () => {
-      expect(dataFetchFailure()).toEqual({ type: 'FETCH_FAILURE' });
-    });
-  });
-
-  describe('detailsFetchStart', () => {
-    it('returns an object with type property', () => {
-      expect(detailsFetchStart()).toEqual({ type: 'FETCH_START' });
-    });
-  });
-
-  describe('detailsFetchSuccess', () => {
-    const data = {
-      house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
-    };
-    it('returns an object with type property and payload', () => {
-      expect(detailsFetchSuccess(data)).toEqual({
-        type: 'FETCH_SUCCESS',
-        payload: {
-          house_type: 'villa', number_of_rooms: 12, price: 100000, description: 'House description',
-        },
-      });
-    });
-  });
-
-  describe('detailsFetchFailure', () => {
-    it('returns an object with type property', () => {
-      expect(detailsFetchFailure()).toEqual({ type: 'FETCH_FAILURE' });
+      expect(dataFetchFailure()).toEqual({ type: 'DATA_FETCH_FAILURE' });
     });
   });
 });

@@ -1,18 +1,24 @@
-import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../../actions/index';
+import { dataFetchStart, dataFetchSuccessList, dataFetchSuccessDetails, dataFetchFailure } from '../../actions/index';
 import houseReducer from '../../reducers/houseReducer';
 
 describe('dataReducer', () => {
   const state = {
-    houses: [],
+    house: {
+      list: [],
+      details: [],
+    },
     isLoading: false,
     isError: false,
   };
 
-  describe('action type is FETCH_START', () => {
+  describe('action type is DATA_FETCH_START', () => {
     it('returns state after setting "isLoading" to "true"', () => {
       expect(houseReducer(state, dataFetchStart())).toEqual(
         {
-          houses: [],
+          house: {
+            list: [],
+            details: [],
+          },
           isLoading: true,
           isError: false,
         },
@@ -20,12 +26,15 @@ describe('dataReducer', () => {
     });
   });
 
-  describe('action type is FETCH_SUCCESS', () => {
+  describe('action type is DATA_FETCH_SUCCESS_LIST', () => {
     const data = { houses: ['house 1', 'house 2'] };
-    it('returns state after setting "isLoading" and "isError" to "false" and payload data to houses', () => {
-      expect(houseReducer(state, dataFetchSuccess(data.houses))).toEqual(
+    it('returns state after setting "isLoading" and "isError" to "false" and payload data to houses list', () => {
+      expect(houseReducer(state, dataFetchSuccessList(data.houses))).toEqual(
         {
-          houses: ['house 1', 'house 2'],
+          house: {
+            list: ['house 1', 'house 2'],
+            details: [],
+          },
           isLoading: false,
           isError: false,
         },
@@ -33,11 +42,29 @@ describe('dataReducer', () => {
     });
   });
 
-  describe('action type is FETCH_FAILURE', () => {
+  describe('action type is DATA_FETCH_SUCCESS_DETAILS', () => {
+    const data = { houses: ['house 1'] };
+    it('returns state after setting "isLoading" and "isError" to "false" and payload data to houses list', () => {
+      expect(houseReducer(state, dataFetchSuccessDetails(data.houses))).toEqual(
+        {
+          house: {
+            list: [],
+            details: ['house 1'],
+          },
+          isLoading: false,
+          isError: false,
+        },
+      );
+    });
+  });
+  describe('action type is DATA_FETCH_FAILURE', () => {
     it('returns state after setting "isLoading" to "false" and "isError" to "true"', () => {
       expect(houseReducer(state, dataFetchFailure())).toEqual(
         {
-          houses: [],
+          house: {
+            list: [],
+            details: [],
+          },
           isLoading: false,
           isError: true,
         },

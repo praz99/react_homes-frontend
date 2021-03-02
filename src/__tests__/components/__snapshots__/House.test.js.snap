@@ -3,19 +3,26 @@
 exports[`renders item component correctly 1`] = `
 <div
   className="house-container"
-  style={
-    Object {
-      "backgroundImage": "url(https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg)",
-    }
-  }
 >
-  <a
-    className="house-button"
-    data-testid="house-link"
-    href="/houses/1"
-    onClick={[Function]}
+  <div
+    className="house-image-container"
   >
-    See Details
-  </a>
+    <img
+      className="house-image"
+      src="https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg"
+    />
+  </div>
+  <div
+    className="house-button-container"
+  >
+    <a
+      className="house-button"
+      data-testid="house-link"
+      href="/houses/1"
+      onClick={[Function]}
+    >
+      See Details
+    </a>
+  </div>
 </div>
 `;
