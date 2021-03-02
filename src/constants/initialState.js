@@ -8,13 +8,10 @@ const INITIAL_STATE = {
   },
 
   data: {
-    houses: [],
-    isLoading: false,
-    isError: false,
-  },
-
-  details: {
-    houses: [],
+    house: {
+      list: [],
+      details: [],
+    },
     isLoading: false,
     isError: false,
   },

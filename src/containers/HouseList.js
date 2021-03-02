@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import House from '../components/House';
-import { dataFetchStart, dataFetchSuccess, dataFetchFailure } from '../actions/index';
+import { dataFetchStart, dataFetchSuccessList, dataFetchFailure } from '../actions/index';
 import { houseListCall } from '../utils/apiCalls';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
@@ -76,12 +76,12 @@ HouseList.defaultProps = {
 const mapStateToProps = state => ({
   isLoading: state.data.isLoading,
   isError: state.data.isError,
-  houses: state.data.houses,
+  houses: state.data.house.list,
 });
 
 const mapDispatchToProps = dispatch => ({
   fetchStart: () => dispatch(dataFetchStart()),
-  fetchSuccess: data => dispatch(dataFetchSuccess(data)),
+  fetchSuccess: data => dispatch(dataFetchSuccessList(data)),
   fetchFailure: () => dispatch(dataFetchFailure()),
 });
 

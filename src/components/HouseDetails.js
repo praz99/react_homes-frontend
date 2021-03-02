@@ -4,7 +4,7 @@ import { Link, Redirect, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { detailsFetchStart, detailsFetchSuccess, detailsFetchFailure } from '../actions/index';
+import { dataFetchStart, dataFetchSuccessDetails, dataFetchFailure } from '../actions/index';
 import { houseDetailsCall } from '../utils/apiCalls';
 import Footer from '../layouts/Footer';
 import Navbar from '../layouts/Navbar';
@@ -104,15 +104,15 @@ HouseDetails.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  isLoading: state.details.isLoading,
-  isError: state.details.isError,
-  houses: state.details.houses,
+  isLoading: state.data.isLoading,
+  isError: state.data.isError,
+  houses: state.data.house.details,
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchStart: () => dispatch(detailsFetchStart()),
-  fetchSuccess: data => dispatch(detailsFetchSuccess(data)),
-  fetchFailure: () => dispatch(detailsFetchFailure()),
+  fetchStart: () => dispatch(dataFetchStart()),
+  fetchSuccess: data => dispatch(dataFetchSuccessDetails(data)),
+  fetchFailure: () => dispatch(dataFetchFailure()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HouseDetails);
