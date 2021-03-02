@@ -69,7 +69,7 @@ const HouseDetails = (
                     {house.built_date}
                   </div>
                   <div className="house-details-info-bg">
-                    Price:
+                    Price: $
                     {' '}
                     {house.price}
                   </div>

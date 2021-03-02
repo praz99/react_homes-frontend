@@ -50,3 +50,29 @@
 .appointment-button a {
   color: #fff;
 }
+
+@media only screen and (max-width: 768px) {
+  .details-show {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+    padding: 1em;
+  }
+
+  .details-image {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+
+  .details-info {
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .house-details-info-bg {
+    margin: 3px 0;
+  }
+}
