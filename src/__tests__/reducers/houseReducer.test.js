@@ -1,4 +1,6 @@
-import { dataFetchStart, dataFetchSuccessList, dataFetchSuccessDetails, dataFetchFailure } from '../../actions/index';
+import {
+  dataFetchStart, dataFetchSuccessList, dataFetchSuccessDetails, dataFetchFailure,
+} from '../../actions/index';
 import houseReducer from '../../reducers/houseReducer';
 
 describe('dataReducer', () => {

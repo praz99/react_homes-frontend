@@ -1,5 +1,7 @@
 import authReducer from '../../reducers/authReducer';
-import { authInit, authSuccess, authFailureSignup, authFailureLogin } from '../../actions/index';
+import {
+  authInit, authSuccess, authFailureSignup, authFailureLogin,
+} from '../../actions/index';
 
 describe('authReducer', () => {
   const state = {
