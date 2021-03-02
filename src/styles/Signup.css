@@ -12,7 +12,7 @@
   margin: 2.5em auto;
   background: #bdbde67a;
   border-radius: 8px;
-  padding: 1em;
+  padding: 2em;
   border: 1px solid #bdbdec;
 }
 
@@ -20,16 +20,6 @@
   margin: 1em 0;
   display: flex;
   flex-direction: column;
-}
-
-.signup-form input {
-  height: 20px;
-  margin: 5px 0;
-}
-
-.signup-form button {
-  margin: 5px 0;
-  padding: 8px;
 }
 
 .signup-buttons {
@@ -40,4 +30,17 @@
 .signup-submit-button,
 .signup-cancel-button {
   width: 49%;
+}
+
+@media only screen and (max-width: 768px) {
+  .signup-form-container {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .signup-form-container {
+    width: 80%;
+    padding: 1.5em;
+  }
 }

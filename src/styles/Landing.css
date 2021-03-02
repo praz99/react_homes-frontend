@@ -32,9 +32,8 @@
   border-radius: 8px;
   height: 100%;
   background: #bdbde67a;
-  padding: 1em;
+  padding: 2em 1em 0 1em;
   border: 1px solid #bdbdec;
-  padding-top: 2em;
 }
 
 .landing-signup-info a {
