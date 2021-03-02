@@ -1,13 +1,13 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  margin: 1em 0;
+  margin: 2em 0;
 }
 
 input,
 button {
-  padding: 5px;
-  margin: 2px;
+  padding: 10px;
+  margin: 4px 2px;
 }
 
 input:focus-within,

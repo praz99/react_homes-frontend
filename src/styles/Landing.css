@@ -34,8 +34,20 @@
   background: #bdbde67a;
   padding: 1em;
   border: 1px solid #bdbdec;
+  padding-top: 2em;
 }
 
 .landing-signup-info a {
   color: blue;
+}
+
+@media only screen and (max-width: 520px) {
+  .landing-info {
+    display: none;
+  }
+
+  .landing-login {
+    width: 100%;
+    margin: 0 2em;
+  }
 }
