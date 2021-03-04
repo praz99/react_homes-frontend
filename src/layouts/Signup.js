@@ -4,17 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { signupCall } from '../utils/apiCalls';
+import { authCall } from '../utils/apiCalls';
 import { authInit, authSuccess, authFailureSignup } from '../actions/index';
 import '../styles/Signup.css';
 
 const Signup = (
   {
-    signupinit,
-    signupsuccess,
-    signupfailure,
-    isLoading,
-    errors,
+    signupinit, signupsuccess, signupfailure, isLoading, errors,
   },
 ) => {
   const history = useHistory();
@@ -58,18 +54,7 @@ const Signup = (
         password,
         password_confirmation,
       };
-      signupinit();
-      signupCall(user)
-        .then(response => {
-          if (response.data.auth_token) {
-            signupsuccess();
-            localStorage.setItem('auth_token', response.data.auth_token);
-            history.push('/houses');
-          }
-        })
-        .catch(error => {
-          signupfailure(error.response.data.message);
-        });
+      authCall('signup', user, signupinit, signupsuccess, signupfailure, history);
     }
     event.preventDefault();
   };

@@ -3,17 +3,13 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
-import { loginCall } from '../utils/apiCalls';
+import { authCall } from '../utils/apiCalls';
 import { authInit, authSuccess, authFailureLogin } from '../actions/index';
 import '../styles/Login.css';
 
 const Login = (
   {
-    logininit,
-    loginsuccess,
-    loginfailure,
-    isLoading,
-    errors,
+    logininit, loginsuccess, loginfailure, isLoading, errors,
   },
 ) => {
   const history = useHistory();
@@ -38,16 +34,7 @@ const Login = (
       username,
       password,
     };
-    logininit();
-    loginCall(user)
-      .then(response => {
-        if (response.data.auth_token) {
-          loginsuccess();
-          localStorage.setItem('auth_token', response.data.auth_token);
-          history.push('/houses');
-        }
-      })
-      .catch(error => loginfailure(error.response.data.message));
+    authCall('login', user, logininit, loginsuccess, loginfailure, history);
   };
 
   const handleErrors = errors => (
