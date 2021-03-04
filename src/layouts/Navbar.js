@@ -21,7 +21,7 @@ const Navbar = () => {
         {
           userStatus && userStatus.length ? (
             <>
-              <a href="/profile" className="profile-button">My Profile</a>
+              <Link to="/profile" className="profile-button">My Profile</Link>
               <button type="button" className="logout-button" onClick={handleLogout}>Logout</button>
             </>
           ) : null
