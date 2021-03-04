@@ -24,12 +24,26 @@ const authCall = (auth_type, user, init, success, failure, history) => {
     .catch(error => failure(error.response.data.message));
 };
 
-const houseListCall = () => axios.get(`${API_MAIN}${API_HOUSES}`, { headers: { Authorization: `${localStorage.getItem('auth_token')}` } }, { withCredentials: true });
-const houseDetailsCall = id => axios.get(`${API_MAIN}${API_HOUSES}${id}`, { headers: { Authorization: `${localStorage.getItem('auth_token')}` } }, { withCredentials: true });
+const apiGetCalls = async (type, init, success, failure, id = '') => {
+  let API_END;
+  if (type === 'house') {
+    API_END = API_HOUSES;
+  } else {
+    API_END = API_PROFILE;
+  }
+
+  init();
+  try {
+    const result = await axios.get(`${API_MAIN}${API_END}${id}`, { headers: { Authorization: `${localStorage.getItem('auth_token')}` } }, { withCredentials: true });
+    success(result.data);
+  } catch (error) {
+    failure();
+  }
+};
+
 const appointmentCall = (house_id, date) => axios.post(`${API_MAIN}${API_HOUSES}${house_id}${API_APPOINTMENT}`, { date }, { headers: { Authorization: `${localStorage.getItem('auth_token')}` } }, { withCredentials: true });
-const profileCall = user_id => axios.get(`${API_MAIN}${API_PROFILE}${user_id}`, { headers: { Authorization: `${localStorage.getItem('auth_token')}` } }, { withCredentials: true });
 
 export {
-  authCall, houseListCall, houseDetailsCall, appointmentCall, profileCall,
+  authCall, appointmentCall, apiGetCalls,
 };
 /* eslint-enable camelcase */

@@ -7,19 +7,14 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import House from '../components/House';
 import { dataFetchStart, dataFetchSuccessList, dataFetchFailure } from '../actions/index';
-import { houseListCall } from '../utils/apiCalls';
+import { apiGetCalls } from '../utils/apiCalls';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
 import '../styles/HouseList.css';
 
 const HouseList = (
   {
-    fetchStart,
-    fetchSuccess,
-    fetchFailure,
-    isLoading,
-    isError,
-    houses,
+    fetchStart, fetchSuccess, fetchFailure, isLoading, isError, houses,
   },
 ) => {
   if (!localStorage.getItem('auth_token')) {
@@ -27,16 +22,7 @@ const HouseList = (
   }
 
   useEffect(() => {
-    const fetchData = async () => {
-      fetchStart();
-      try {
-        const result = await houseListCall();
-        fetchSuccess(result.data);
-      } catch (error) {
-        fetchFailure();
-      }
-    };
-    fetchData();
+    apiGetCalls('house', fetchStart, fetchSuccess, fetchFailure);
   }, []);
 
   return (

@@ -5,19 +5,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader-spinner';
 import { dataFetchStart, dataFetchSuccessDetails, dataFetchFailure } from '../actions/index';
-import { houseDetailsCall } from '../utils/apiCalls';
+import { apiGetCalls } from '../utils/apiCalls';
 import Footer from '../layouts/Footer';
 import Navbar from '../layouts/Navbar';
 import '../styles/HouseDetails.css';
 
 const HouseDetails = (
   {
-    fetchStart,
-    fetchSuccess,
-    fetchFailure,
-    isLoading,
-    isError,
-    houses,
+    fetchStart, fetchSuccess, fetchFailure, isLoading, isError, houses,
   },
 ) => {
   if (!localStorage.getItem('auth_token')) {
@@ -27,16 +22,7 @@ const HouseDetails = (
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchDetail = async () => {
-      fetchStart();
-      try {
-        const result = await houseDetailsCall(id);
-        fetchSuccess(result.data);
-      } catch (error) {
-        fetchFailure();
-      }
-    };
-    fetchDetail();
+    apiGetCalls('house', fetchStart, fetchSuccess, fetchFailure, id);
   }, []);
 
   return (

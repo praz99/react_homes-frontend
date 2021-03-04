@@ -8,18 +8,12 @@ import Loader from 'react-loader-spinner';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { profileFetchStart, profileFetchSuccess, profileFetchFailure } from '../actions/index';
+import { apiGetCalls } from '../utils/apiCalls';
 import '../styles/Profile.css';
-import { profileCall } from '../utils/apiCalls';
 
 const Profile = (
   {
-    fetchStart,
-    fetchSuccess,
-    fetchFailure,
-    user,
-    appointments,
-    isLoading,
-    isError,
+    fetchStart, fetchSuccess, fetchFailure, user, appointments, isLoading, isError,
   },
 ) => {
   if (!localStorage.getItem('auth_token')) {
@@ -28,16 +22,7 @@ const Profile = (
 
   const decoded = jwt(localStorage.getItem('auth_token'));
   useEffect(() => {
-    const fetchUser = async () => {
-      fetchStart();
-      try {
-        const result = await profileCall(decoded.user_id);
-        fetchSuccess(result.data);
-      } catch (error) {
-        fetchFailure();
-      }
-    };
-    fetchUser();
+    apiGetCalls('profile', fetchStart, fetchSuccess, fetchFailure, decoded.user_id);
   }, []);
 
   const username = [user].map(usr => (
