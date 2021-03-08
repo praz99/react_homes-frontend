@@ -1,0 +1,52 @@
+.landing-container {
+  display: flex;
+  height: 85vh;
+  width: 100vw;
+  margin-top: 2.5em;
+  background-image: url('../images/illustration.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.landing-info {
+  text-align: center;
+  margin: 0 0.5em 0 2.5em;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background: #bdbde67a;
+  padding: 1em;
+  position: relative;
+  border: 1px solid #bdbdec;
+}
+
+.landing-logo-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.landing-login {
+  text-align: center;
+  margin: 0 2.5em 0 0.5em;
+  border-radius: 8px;
+  height: 100%;
+  background: #bdbde67a;
+  padding: 2em 1em 0 1em;
+  border: 1px solid #bdbdec;
+}
+
+.landing-signup-info a {
+  color: blue;
+}
+
+@media only screen and (max-width: 520px) {
+  .landing-info {
+    display: none;
+  }
+
+  .landing-login {
+    width: 100%;
+    margin: 0 2em;
+  }
+}

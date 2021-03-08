@@ -1,0 +1,36 @@
+.house-container {
+  height: calc(96.93vh - 105px);
+  background: #e5e5f5;
+}
+
+.house-image-container {
+  height: 85%;
+
+  /* background: rgb(69,64,145);
+  background: linear-gradient(90deg, rgba(69,64,145,1) 0%, rgba(229,229,245,1) 5%, rgba(229,229,245,1) 95%, rgba(69,64,145,1) 100%); */
+}
+
+.house-image {
+  height: 100%;
+  object-fit: contain;
+}
+
+.house-button-container {
+  margin-top: 15px;
+}
+
+.house-button {
+  background: #e5e5f5;
+  border: 1px solid #6f1d1d;
+  color: #6f1d1d;
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px 10px;
+  font-weight: 700;
+}
+
+.house-button:hover {
+  color: #fff;
+  background-color: #6f1d1d;
+}

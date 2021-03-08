@@ -1,0 +1,74 @@
+import React, { useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Loader from 'react-loader-spinner';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import House from '../components/House';
+import { dataFetchStart, dataFetchSuccessList, dataFetchFailure } from '../actions/index';
+import { apiGetCalls } from '../utils/apiCalls';
+import Navbar from '../layouts/Navbar';
+import Footer from '../layouts/Footer';
+import '../styles/HouseList.css';
+
+const HouseList = (
+  {
+    fetchStart, fetchSuccess, fetchFailure, isLoading, isError, houses,
+  },
+) => {
+  if (!localStorage.getItem('auth_token')) {
+    return <Redirect to="/" />;
+  }
+
+  useEffect(() => {
+    apiGetCalls('house', fetchStart, fetchSuccess, fetchFailure);
+  }, []);
+
+  return (
+    <>
+      <Navbar />
+      {isError && <div>Something went wrong. Please try again...</div>}
+      {isLoading ? (<div><Loader type="ThreeDots" color="#6F1D1D" height={80} width={80} /></div>) : (
+        <div>
+          {houses && houses.length ? (
+            <div className="houseList-container">
+              <Carousel showThumbs={false}>
+                {houses.map(house => (<House key={house.id} house={house} />))}
+              </Carousel>
+            </div>
+          ) : <div>No data</div>}
+        </div>
+      )}
+      <Footer />
+    </>
+  );
+};
+
+HouseList.propTypes = {
+  fetchStart: PropTypes.func.isRequired,
+  fetchSuccess: PropTypes.func.isRequired,
+  fetchFailure: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isError: PropTypes.bool,
+  houses: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+};
+
+HouseList.defaultProps = {
+  isLoading: false,
+  isError: false,
+};
+
+const mapStateToProps = state => ({
+  isLoading: state.data.isLoading,
+  isError: state.data.isError,
+  houses: state.data.house.list,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchStart: () => dispatch(dataFetchStart()),
+  fetchSuccess: data => dispatch(dataFetchSuccessList(data)),
+  fetchFailure: () => dispatch(dataFetchFailure()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HouseList);

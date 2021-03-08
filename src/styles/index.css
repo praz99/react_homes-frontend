@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Varta:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'Varta', sans-serif;
+  background: rgba(218, 239, 255, 0.871);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.error {
+  background: #e8474799;
+  border: 1px solid #e84747;
+  border-radius: 3px;
+  margin: 3px;
+}

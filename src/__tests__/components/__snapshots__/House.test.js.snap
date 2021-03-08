@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders item component correctly 1`] = `
+<div
+  className="house-container"
+>
+  <div
+    className="house-image-container"
+  >
+    <img
+      className="house-image"
+      src="https://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg"
+    />
+  </div>
+  <div
+    className="house-button-container"
+  >
+    <a
+      className="house-button"
+      data-testid="house-link"
+      href="/houses/1"
+      onClick={[Function]}
+    >
+      See Details
+    </a>
+  </div>
+</div>
+`;
