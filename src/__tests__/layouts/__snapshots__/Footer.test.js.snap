@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Footer component correctly 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="footer-left"
+  >
+    <p>
+      Developed by
+      <span
+        className="name"
+      >
+         Prajwal Thapa
+      </span>
+    </p>
+  </div>
+  <div
+    className="footer-right"
+  >
+    <a
+      aria-label="github link"
+      className="footer-icons"
+      href="https://github.com/praz99"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <i
+        className="fab fa-github"
+      />
+    </a>
+    <a
+      aria-label="linked-in link"
+      className="footer-icons"
+      href="https://linkedin.com/in/prazwal-thapa"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <i
+        className="fab fa-linkedin-in"
+      />
+    </a>
+    <a
+      aria-label="twitter link"
+      className="footer-icons"
+      href="https://twitter.com/thapa_praz"
+      rel="noreferrer"
+      target="_blank"
+    >
+      <i
+        className="fab fa-twitter"
+      />
+    </a>
+  </div>
+</div>
+`;

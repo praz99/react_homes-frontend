@@ -1,0 +1,21 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 0;
+}
+
+input,
+button {
+  padding: 12px;
+  margin: 5px 2px;
+}
+
+input:focus-within,
+button:focus-within {
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background: #c3bbbb;
+}

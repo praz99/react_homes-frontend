@@ -1,0 +1,78 @@
+.details-container {
+  margin: 60px 0;
+}
+
+.details-show {
+  padding: 1em 2em;
+  margin-top: 5em;
+  display: flex;
+}
+
+.details-image {
+  width: 60%;
+  border: 1px solid #6f1d1d;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.details-img {
+  width: 100%;
+}
+
+.details-info {
+  width: 40%;
+  border: 1px solid #6f1d1d;
+  margin-left: 10px;
+  padding: 1em;
+}
+
+.house-details-info-bg {
+  background-color: #d06a4382;
+  padding: 4px 0 4px 8px;
+  margin: 3px;
+}
+
+.appointment-prompt {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 14px;
+}
+
+.appointment-button {
+  color: #fff;
+  background-color: #6f1d1d;
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.appointment-button a {
+  color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .details-show {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+    padding: 1em;
+  }
+
+  .details-image {
+    width: 100%;
+    margin: 0;
+    border: none;
+  }
+
+  .details-info {
+    width: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .house-details-info-bg {
+    margin: 3px 0;
+  }
+}

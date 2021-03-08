@@ -1,0 +1,34 @@
+.footer {
+  background: #bdbde6;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.footer-left {
+  width: 50%;
+  font-size: 12px;
+}
+
+.name {
+  color: #6b0646;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.footer-right {
+  position: absolute;
+  right: 20px;
+}
+
+.footer-icons {
+  color: black;
+  padding: 0 10px;
+  font-size: 20px;
+}
